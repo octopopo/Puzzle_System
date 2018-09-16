@@ -17,6 +17,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private float _holdDelta;
         [SerializeField] private PieceStatus _pieceStatus;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        private Vector3 _lastPosition;
         private float _clickedTime;
 
         // Use this for initialization
@@ -34,7 +35,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 {
                     if ((_clickedTime + _doubleClickDelta) < Time.time)
                     {
-                        Debug.Log("Not click");
+                        //Debug.Log("Not click");
                         _pieceStatus = PieceStatus.Unclicked;
                         _clickedTime = 0.0f;
                     }
@@ -43,11 +44,17 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 {
                     if((_clickedTime + _holdDelta) < Time.time)
                     {
-                        Debug.Log("click hold");
+                        //Debug.Log("click hold");
                         MouseHoldHandler();
                         _pieceStatus = PieceStatus.ClickHold;
                     }
                 }
+            }
+            if(_pieceStatus == PieceStatus.ClickHold)
+            {
+                Vector3 mousePos = Input.mousePosition;
+                Vector3 newMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10));
+                transform.position = new Vector3(newMousePos.x, newMousePos.y, 0);
             }
         }
 
@@ -55,7 +62,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         {
             if(_pieceStatus == PieceStatus.FirstClicked && ((_clickedTime + _doubleClickDelta) >= Time.time))
             {
-                Debug.Log("Double Clicked");
+                //Debug.Log("Double Clicked");
                 DoubleClickedHandler();
                 _pieceStatus = PieceStatus.Unclicked;
                 _clickedTime = 0.0f;
@@ -84,6 +91,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void MouseHoldHandler()
         {
+            _lastPosition = transform.position;
             _spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.3f);
         }
     }
