@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using PuzzleSystem.PuzzleManagers.V1;
 using UnityEngine;
 
 namespace PuzzleSystem.PuzzlePiece.V1
@@ -17,8 +18,24 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private float _holdDelta;
         [SerializeField] private PieceStatus _pieceStatus;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private PuzzleManager _puzzleManager;
+        [SerializeField] private BoxCollider2D _boxCollider2D;
         private Vector3 _lastPosition;
+        private Color _lastColor;
         private float _clickedTime;
+        [SerializeField] private int _pieceNumber;
+
+        public int PieceNumber
+        {
+            set
+            {
+                _pieceNumber = value;
+            }
+            get
+            {
+                return _pieceNumber;
+            }
+        }
 
         // Use this for initialization
         void Start()
@@ -46,7 +63,6 @@ namespace PuzzleSystem.PuzzlePiece.V1
                     {
                         //Debug.Log("click hold");
                         MouseHoldHandler();
-                        _pieceStatus = PieceStatus.ClickHold;
                     }
                 }
             }
@@ -80,7 +96,27 @@ namespace PuzzleSystem.PuzzlePiece.V1
             {
                 _pieceStatus = PieceStatus.Unclicked;
                 _clickedTime = 0.0f;
-                _spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
+                _puzzleManager.PieceIsDragging = false;
+                _boxCollider2D.enabled = true;
+                if(_puzzleManager.DraggedTarget == -1)
+                {
+                    transform.position = _lastPosition;
+                }
+                else
+                {
+                    _puzzleManager.SwapPosition(PieceNumber, _lastPosition);
+                }
+                _puzzleManager.DraggedTarget = -1;
+            }
+        }
+
+        private void OnMouseEnter()
+        {
+            if(_puzzleManager.PieceIsDragging)
+            {
+                Debug.Log(transform.name);
+                _puzzleManager.DraggedTarget = PieceNumber;
             }
         }
 
@@ -91,8 +127,15 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void MouseHoldHandler()
         {
-            _lastPosition = transform.position;
-            _spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, 0.3f);
+            if(!_puzzleManager.PieceIsDragging)
+            {
+                _pieceStatus = PieceStatus.ClickHold;
+                _boxCollider2D.enabled = false;
+                _puzzleManager.PieceIsDragging = true;
+                _lastPosition = transform.position;
+                _lastColor = _spriteRenderer.color;
+                _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 0.3f);
+            }
         }
     }
 }
