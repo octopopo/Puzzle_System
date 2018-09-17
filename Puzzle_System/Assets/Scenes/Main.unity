@@ -177,7 +177,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -212,9 +212,20 @@ Prefab:
       propertyPath: m_Name
       value: PuzzlePiece3
       objectReference: {fileID: 0}
+    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+        type: 2}
+      propertyPath: _pieceNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &466459267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 457357147}
+  m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
 --- !u!114 &500886567 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
@@ -236,8 +247,13 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
+      propertyPath: _answer.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
       propertyPath: _puzzlePieces.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4534482333374426, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
       propertyPath: m_LocalPosition.x
@@ -269,7 +285,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4534482333374426, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
@@ -281,6 +297,31 @@ Prefab:
       propertyPath: _puzzlePieces.Array.data[1]
       value: 
       objectReference: {fileID: 805402517}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: _puzzlePieces.Array.data[2]
+      value: 
+      objectReference: {fileID: 466459267}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: _answer.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: _answer.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: _answer.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: _puzzlePieces.Array.data[3]
+      value: 
+      objectReference: {fileID: 1201374257}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
   m_IsPrefabAsset: 0
@@ -332,9 +373,76 @@ Prefab:
       propertyPath: m_Name
       value: PuzzlePiece2
       objectReference: {fileID: 0}
+    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+        type: 2}
+      propertyPath: _pieceNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1201374256
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+        type: 2}
+      propertyPath: _puzzleManager
+      value: 
+      objectReference: {fileID: 1544193417}
+    - target: {fileID: 1294283064547646, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+      propertyPath: m_Name
+      value: PuzzlePiece4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+        type: 2}
+      propertyPath: _pieceNumber
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!114 &1201374257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1201374256}
+  m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
 --- !u!114 &1544193417 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,

@@ -99,14 +99,15 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
                 _puzzleManager.PieceIsDragging = false;
                 _boxCollider2D.enabled = true;
-                if(_puzzleManager.DraggedTarget == -1)
+                if(_puzzleManager.TouchedTarget == -1)
                 {
                     transform.position = _lastPosition;
                 }
                 else
                 {
-                    _puzzleManager.SwapPosition(PieceNumber, _lastPosition);
+                    _puzzleManager.SwapPosition(_lastPosition);
                 }
+                _puzzleManager.TouchedTarget = -1;
                 _puzzleManager.DraggedTarget = -1;
             }
         }
@@ -115,8 +116,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         {
             if(_puzzleManager.PieceIsDragging)
             {
-                Debug.Log(transform.name);
-                _puzzleManager.DraggedTarget = PieceNumber;
+                _puzzleManager.TouchedTarget = PieceNumber;
             }
         }
 
@@ -132,6 +132,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _pieceStatus = PieceStatus.ClickHold;
                 _boxCollider2D.enabled = false;
                 _puzzleManager.PieceIsDragging = true;
+                _puzzleManager.DraggedTarget = PieceNumber;
                 _lastPosition = transform.position;
                 _lastColor = _spriteRenderer.color;
                 _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 0.3f);

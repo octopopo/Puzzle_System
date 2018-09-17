@@ -11,7 +11,9 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] bool _pieceIsDragging;
         [SerializeField] float _pieceWidth;
         [SerializeField] float _pieceHeight;
+        [SerializeField] int _tounchedTarget;
         [SerializeField] int _draggedTarget;
+        [SerializeField] int[] _answer;
         public bool PieceIsDragging
         {
             set
@@ -21,6 +23,18 @@ namespace PuzzleSystem.PuzzleManagers.V1
             get
             {
                 return _pieceIsDragging;
+            }
+        }
+
+        public int TouchedTarget
+        {
+            set
+            {
+                _tounchedTarget = value;
+            }
+            get
+            {
+                return _tounchedTarget;
             }
         }
 
@@ -41,10 +55,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _pieceIsDragging = false;
             _pieceWidth = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.x;
             _pieceHeight = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.y;
-            for(int i = 0; i < _puzzlePieces.Length; i++)
-            {
-                _puzzlePieces[i].PieceNumber = i;
-            }
+            _tounchedTarget = -1;
             _draggedTarget = -1;
         }
 
@@ -54,10 +65,10 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         }
 
-        public void SwapPosition(int firstTarget, Vector3 firstLastPosition)
+        public void SwapPosition(Vector3 firstLastPosition)
         {
-            Transform firstTransform = _puzzlePieces[firstTarget].transform;
-            Transform secondTransform = _puzzlePieces[_draggedTarget].transform;
+            Transform firstTransform = _puzzlePieces[_draggedTarget].transform;
+            Transform secondTransform = _puzzlePieces[_tounchedTarget].transform;
 
             firstTransform.position = secondTransform.position;
             secondTransform.position = firstLastPosition;
