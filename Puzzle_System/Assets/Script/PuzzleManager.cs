@@ -16,6 +16,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private int _tounchedTarget;
         [SerializeField] private int _draggedTarget;
         [SerializeField] private int[] _answer;
+        [SerializeField] private int[] _solvingField;
         public bool PieceIsDragging
         {
             set
@@ -56,12 +57,14 @@ namespace PuzzleSystem.PuzzleManagers.V1
         {
             //make sure we have enough puzzle pieces
             Debug.Assert((rowCount * colCount) == _puzzlePieces.Length);
+            Debug.Assert(_answer.Length == _solvingField.Length);
             _pieceIsDragging = false;
             _pieceWidth = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.x;
             _pieceHeight = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.y;
             _tounchedTarget = -1;
             _draggedTarget = -1;
             OrderPuzzle();
+            SetPieceNumber();
         }
 
         private void OrderPuzzle()
@@ -106,6 +109,16 @@ namespace PuzzleSystem.PuzzleManagers.V1
             return new Vector2(leftPoint, botPoint);
         }
 
+        public void SetPieceNumber()
+        {
+            Debug.Assert(_solvingField.Length == _puzzlePieces.Length);
+            for(int i = 0; i < _solvingField.Length; i++)
+            {
+                _puzzlePieces[i].PieceNumber = _solvingField[i];
+                _puzzlePieces[i].SolvingNumber = i;
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -119,6 +132,36 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             firstTransform.position = secondTransform.position;
             secondTransform.position = firstLastPosition;
+
+            int tempSwap = _solvingField[_draggedTarget];
+            _solvingField[_draggedTarget] = _solvingField[_tounchedTarget];
+            _solvingField[_tounchedTarget] = tempSwap;
+
+            _puzzlePieces[_draggedTarget].SolvingNumber = _tounchedTarget;
+            _puzzlePieces[_tounchedTarget].SolvingNumber = _draggedTarget;
+
+            PuzzlePieceBehavior tempPPB = _puzzlePieces[_draggedTarget];
+            _puzzlePieces[_draggedTarget] = _puzzlePieces[_tounchedTarget];
+            _puzzlePieces[_tounchedTarget] = tempPPB;
+
+            if(CheckAnswer(_solvingField, _answer))
+            {
+                Debug.Log("You win!");
+            }
+
+        }
+
+        private bool CheckAnswer(int[] arr1, int[] arr2)
+        {
+            for(int i = 0; i < arr1.Length; i++)
+            {
+                if(arr1[i] != arr2[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
