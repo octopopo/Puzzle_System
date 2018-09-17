@@ -322,6 +322,21 @@ Prefab:
       propertyPath: _puzzlePieces.Array.data[3]
       value: 
       objectReference: {fileID: 1201374257}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: rowConut
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: colCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: rowCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
   m_IsPrefabAsset: 0

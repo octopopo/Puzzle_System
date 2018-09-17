@@ -7,13 +7,15 @@ namespace PuzzleSystem.PuzzleManagers.V1
 {
     public class PuzzleManager : MonoBehaviour
     {
-        [SerializeField] PuzzlePieceBehavior[] _puzzlePieces;
-        [SerializeField] bool _pieceIsDragging;
-        [SerializeField] float _pieceWidth;
-        [SerializeField] float _pieceHeight;
-        [SerializeField] int _tounchedTarget;
-        [SerializeField] int _draggedTarget;
-        [SerializeField] int[] _answer;
+        [SerializeField] private PuzzlePieceBehavior[] _puzzlePieces;
+        [SerializeField] private bool _pieceIsDragging;
+        [SerializeField] private float _pieceWidth;
+        [SerializeField] private float _pieceHeight;
+        [SerializeField] private int rowCount;
+        [SerializeField] private int colCount;
+        [SerializeField] private int _tounchedTarget;
+        [SerializeField] private int _draggedTarget;
+        [SerializeField] private int[] _answer;
         public bool PieceIsDragging
         {
             set
@@ -52,11 +54,56 @@ namespace PuzzleSystem.PuzzleManagers.V1
         // Use this for initialization
         void Start()
         {
+            //make sure we have enough puzzle pieces
+            Debug.Assert((rowCount * colCount) == _puzzlePieces.Length);
             _pieceIsDragging = false;
             _pieceWidth = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.x;
             _pieceHeight = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.y;
             _tounchedTarget = -1;
             _draggedTarget = -1;
+            OrderPuzzle();
+        }
+
+        private void OrderPuzzle()
+        {
+            Vector2 botLeftPoint = GetBotLeftPoint();
+            Debug.Log("botLeftPoint: " + botLeftPoint);
+            for(int i = 0; i < rowCount; i++)
+            {
+                for(int j = 0; j < colCount; j++)
+                {
+                    int target = i * colCount + j;
+                    Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
+                    _puzzlePieces[target].transform.position = newPosition;
+                }
+            }
+            return;
+        }
+
+        private Vector2 GetBotLeftPoint()
+        {
+            float leftPoint, botPoint;
+            int totalPuzzle = _puzzlePieces.Length;
+            if (colCount % 2 == 0)
+            {
+                //is minus because is left;
+                leftPoint = -_pieceWidth * ((colCount / 2) - 1 + 0.5f);
+            }
+            else
+            {
+                leftPoint = -_pieceWidth * ((colCount / 2));
+            }
+
+            if (rowCount % 2 == 0)
+            {
+                botPoint = -_pieceHeight * ((rowCount / 2) - 1 + 0.5f);
+            }
+            else
+            {
+                botPoint = -_pieceHeight * ((rowCount / 2));
+            }
+
+            return new Vector2(leftPoint, botPoint);
         }
 
         // Update is called once per frame
