@@ -543,182 +543,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 249056402}
   m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
---- !u!1001 &620720183
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _puzzleManager
-      value: 
-      objectReference: {fileID: 1544193417}
-    - target: {fileID: 1294283064547646, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_Name
-      value: PuzzlePiece14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _pieceNumber
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300028, guid: f727f03b2b594c84b951d529950d361c,
-        type: 3}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-  m_IsPrefabAsset: 0
---- !u!114 &620720184 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-    type: 2}
-  m_PrefabInternal: {fileID: 620720183}
-  m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
---- !u!1001 &720130677
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _puzzleManager
-      value: 
-      objectReference: {fileID: 1544193417}
-    - target: {fileID: 1294283064547646, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_Name
-      value: PuzzlePiece15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _pieceNumber
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300030, guid: f727f03b2b594c84b951d529950d361c,
-        type: 3}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-  m_IsPrefabAsset: 0
---- !u!114 &720130678 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-    type: 2}
-  m_PrefabInternal: {fileID: 720130677}
-  m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
 --- !u!1001 &771613300
 Prefab:
   m_ObjectHideFlags: 0
@@ -823,12 +647,17 @@ Prefab:
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _answer.Array.size
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _solvingField.Array.size
-      value: 16
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: _puzzlePieces.Array.size
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4534482333374426, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
       propertyPath: m_LocalPosition.x
@@ -860,7 +689,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4534482333374426, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
@@ -926,22 +755,22 @@ Prefab:
         type: 2}
       propertyPath: _puzzlePieces.Array.data[12]
       value: 
-      objectReference: {fileID: 1302590856}
+      objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _puzzlePieces.Array.data[13]
       value: 
-      objectReference: {fileID: 1438728362}
+      objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _puzzlePieces.Array.data[14]
       value: 
-      objectReference: {fileID: 620720184}
+      objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _puzzlePieces.Array.data[15]
       value: 
-      objectReference: {fileID: 720130678}
+      objectReference: {fileID: 0}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _answer.Array.data[6]
@@ -996,6 +825,11 @@ Prefab:
         type: 2}
       propertyPath: _pieceGap
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
+        type: 2}
+      propertyPath: rowCount
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e5e17a978af6ab47900e8ec3169a208, type: 2}
@@ -1169,182 +1003,6 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
     type: 2}
   m_PrefabInternal: {fileID: 1201374256}
-  m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
---- !u!1001 &1302590855
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _puzzleManager
-      value: 
-      objectReference: {fileID: 1544193417}
-    - target: {fileID: 1294283064547646, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_Name
-      value: PuzzlePiece12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _pieceNumber
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300024, guid: f727f03b2b594c84b951d529950d361c,
-        type: 3}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-  m_IsPrefabAsset: 0
---- !u!114 &1302590856 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1302590855}
-  m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
---- !u!1001 &1438728361
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4899009349573370, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _puzzleManager
-      value: 
-      objectReference: {fileID: 1544193417}
-    - target: {fileID: 1294283064547646, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-      propertyPath: m_Name
-      value: PuzzlePiece13
-      objectReference: {fileID: 0}
-    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: _pieceNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300026, guid: f727f03b2b594c84b951d529950d361c,
-        type: 3}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 61489860594732968, guid: f3cec67f67229304c988b65c073cb8c0,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
-  m_IsPrefabAsset: 0
---- !u!114 &1438728362 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
-    type: 2}
-  m_PrefabInternal: {fileID: 1438728361}
   m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
 --- !u!1001 &1475599097
 Prefab:

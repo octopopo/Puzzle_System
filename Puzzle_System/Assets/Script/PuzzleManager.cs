@@ -79,14 +79,14 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             //These part might not been used
             //set up the piece in the order
-            //OrderPuzzle();
+            OrderPuzzle();
             //SetPieceNumber();
 
             //Set the game Progress to very beginning
             _playerProgress = GamePhase.FirstStep;
 
             //Hide all the pieces
-            HideAllPieces();
+            //HideAllPieces();
             GameProgessTracktor();
         }
 
@@ -209,6 +209,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
             {
                 case GamePhase.FirstStep:
                     _puzzlePieces[0].gameObject.SetActive(true);
+                    _puzzlePieces[1].gameObject.SetActive(true);
                     break;
                 case GamePhase.SecondStep:
                 case GamePhase.ThirdStep:
