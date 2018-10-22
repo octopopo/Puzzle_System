@@ -26,6 +26,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private int[] _solvingField;
         [SerializeField] private float _pieceGap;
         [SerializeField] private GamePhase _playerProgress;
+        [SerializeField] private Dictionary<int, Vector3> _numToPosition;
+        private int _totalPiece;
         public bool PieceIsDragging
         {
             set
@@ -68,6 +70,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
             Debug.Assert((rowCount * colCount) == _puzzlePieces.Length);
             Debug.Assert(_answer.Length == _solvingField.Length);
 
+            _totalPiece = _puzzlePieces.Length;
             _pieceIsDragging = false;
 
             //get the size of the pieces so that we can set up the puzzle
@@ -79,15 +82,27 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             //These part might not been used
             //set up the piece in the order
-            OrderPuzzle();
+            //OrderPuzzle();
             //SetPieceNumber();
+
+            //Instantiate a dictionary
+            _numToPosition = new Dictionary<int, Vector3>();
 
             //Set the game Progress to very beginning
             _playerProgress = GamePhase.FirstStep;
 
             //Hide all the pieces
-            //HideAllPieces();
+            StorePiecePosition();
+            HideAllPieces();
             GameProgessTracktor();
+        }
+
+        private void StorePiecePosition()
+        {
+            for(int i = 0; i < _totalPiece; i++)
+            {
+                _numToPosition.Add(i, _puzzlePieces[i].transform.position);
+            }
         }
 
         private void OrderPuzzle()
@@ -153,7 +168,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
         // Update is called once per frame
         void Update()
         {
-
+            //Add it for debug
+            GameProgessTracktor();
         }
 
         public void SwapPosition(Vector3 firstLastPosition)
@@ -212,8 +228,21 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[1].gameObject.SetActive(true);
                     break;
                 case GamePhase.SecondStep:
+                    _puzzlePieces[2].gameObject.SetActive(true);
+                    _puzzlePieces[5].gameObject.SetActive(true);
+                    break;
                 case GamePhase.ThirdStep:
+                    _puzzlePieces[3].gameObject.SetActive(true);
+                    _puzzlePieces[4].gameObject.SetActive(true);
+                    _puzzlePieces[6].gameObject.SetActive(true);
+                    _puzzlePieces[7].gameObject.SetActive(true);
+                    break;
                 case GamePhase.FourthStep:
+                    _puzzlePieces[8].gameObject.SetActive(true);
+                    _puzzlePieces[9].gameObject.SetActive(true);
+                    _puzzlePieces[10].gameObject.SetActive(true);
+                    _puzzlePieces[11].gameObject.SetActive(true);
+                    break;
                 default:
                     break;
             }
