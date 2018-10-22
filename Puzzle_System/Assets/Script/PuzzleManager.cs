@@ -17,6 +17,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private int _draggedTarget;
         [SerializeField] private int[] _answer;
         [SerializeField] private int[] _solvingField;
+        [SerializeField] private float _pieceGap;
         public bool PieceIsDragging
         {
             set
@@ -76,7 +77,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 for(int j = 0; j < colCount; j++)
                 {
                     int target = i * colCount + j;
-                    Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
+                    //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
+                    Vector2 newPosition = new Vector2(botLeftPoint.x + j * (_pieceWidth + _pieceGap), botLeftPoint.y + i * (_pieceHeight + _pieceGap));
                     _puzzlePieces[target].transform.position = newPosition;
                 }
             }
@@ -90,20 +92,27 @@ namespace PuzzleSystem.PuzzleManagers.V1
             if (colCount % 2 == 0)
             {
                 //is minus because is left;
-                leftPoint = -_pieceWidth * ((colCount / 2) - 1 + 0.5f);
+                //The solution below is without the gap
+                //leftPoint = -_pieceWidth * ((colCount / 2) - 1 + 0.5f);
+
+                //The solution with the gap
+                leftPoint = -(_pieceWidth + _pieceGap) * ((colCount / 2) - 1 + 0.5f);
             }
             else
             {
-                leftPoint = -_pieceWidth * ((colCount / 2));
+                //leftPoint = -_pieceWidth * ((colCount / 2));
+                leftPoint = -(_pieceWidth + _pieceGap) * ((colCount / 2));
             }
 
             if (rowCount % 2 == 0)
             {
-                botPoint = -_pieceHeight * ((rowCount / 2) - 1 + 0.5f);
+                //botPoint = -_pieceHeight * ((rowCount / 2) - 1 + 0.5f);
+                botPoint = -(_pieceHeight + _pieceGap) * ((rowCount / 2) - 1 + 0.5f);
             }
             else
             {
-                botPoint = -_pieceHeight * ((rowCount / 2));
+                //botPoint = -_pieceHeight * ((rowCount / 2));
+                botPoint = -(_pieceHeight + _pieceGap) * ((rowCount / 2));
             }
 
             return new Vector2(leftPoint, botPoint);

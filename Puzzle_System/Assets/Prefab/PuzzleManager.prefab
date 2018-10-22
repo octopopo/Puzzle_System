@@ -53,4 +53,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _puzzlePieces:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _pieceIsDragging: 0
+  _pieceWidth: 0
+  _pieceHeight: 0
+  rowCount: 4
+  colCount: 4
+  _tounchedTarget: 0
+  _draggedTarget: 0
+  _answer: 000000000100000002000000030000000400000005000000
+  _solvingField: 020000000400000005000000010000000300000000000000
