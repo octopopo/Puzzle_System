@@ -79,11 +79,15 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             //These part might not been used
             //set up the piece in the order
-            OrderPuzzle();
+            //OrderPuzzle();
             //SetPieceNumber();
 
             //Set the game Progress to very beginning
             _playerProgress = GamePhase.FirstStep;
+
+            //Hide all the pieces
+            HideAllPieces();
+            GameProgessTracktor();
         }
 
         private void OrderPuzzle()
@@ -189,6 +193,29 @@ namespace PuzzleSystem.PuzzleManagers.V1
             }
 
             return true;
+        }
+
+        private void HideAllPieces()
+        {
+            for (int i = 0; i < _puzzlePieces.Length; i++)
+            {
+                _puzzlePieces[i].gameObject.SetActive(false);
+            }
+        }
+
+        private void GameProgessTracktor()
+        {
+            switch(_playerProgress)
+            {
+                case GamePhase.FirstStep:
+                    _puzzlePieces[0].gameObject.SetActive(true);
+                    break;
+                case GamePhase.SecondStep:
+                case GamePhase.ThirdStep:
+                case GamePhase.FourthStep:
+                default:
+                    break;
+            }
         }
     }
 }

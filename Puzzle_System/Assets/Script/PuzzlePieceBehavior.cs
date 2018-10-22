@@ -72,14 +72,14 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 }
                 else
                 {
-                    if((_clickedTime + _holdDelta) < Time.time)
+                    if ((_clickedTime + _holdDelta) < Time.time)
                     {
                         //Debug.Log("click hold");
                         MouseHoldHandler();
                     }
                 }
             }
-            if(_pieceStatus == PieceStatus.ClickHold)
+            if (_pieceStatus == PieceStatus.ClickHold)
             {
                 Vector3 mousePos = Input.mousePosition;
                 Vector3 newMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10));
@@ -89,14 +89,14 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void OnMouseDown()
         {
-            if(_pieceStatus == PieceStatus.FirstClicked && ((_clickedTime + _doubleClickDelta) >= Time.time))
+            if (_pieceStatus == PieceStatus.FirstClicked && ((_clickedTime + _doubleClickDelta) >= Time.time))
             {
                 //Debug.Log("Double Clicked");
                 DoubleClickedHandler();
                 _pieceStatus = PieceStatus.Unclicked;
                 _clickedTime = 0.0f;
             }
-            else if(_pieceStatus == PieceStatus.Unclicked)
+            else if (_pieceStatus == PieceStatus.Unclicked)
             {
                 _clickedTime = Time.time;
                 _pieceStatus = PieceStatus.FirstClicked;
@@ -105,14 +105,14 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void OnMouseUp()
         {
-            if(_pieceStatus == PieceStatus.ClickHold)
+            if (_pieceStatus == PieceStatus.ClickHold)
             {
                 _pieceStatus = PieceStatus.Unclicked;
                 _clickedTime = 0.0f;
                 _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
                 _puzzleManager.PieceIsDragging = false;
                 _boxCollider2D.enabled = true;
-                if(_puzzleManager.TouchedTarget == -1)
+                if (_puzzleManager.TouchedTarget == -1)
                 {
                     transform.position = _lastPosition;
                 }
@@ -127,7 +127,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void OnMouseEnter()
         {
-            if(_puzzleManager.PieceIsDragging)
+            if (_puzzleManager.PieceIsDragging)
             {
                 _puzzleManager.TouchedTarget = SolvingNumber;
             }
@@ -140,7 +140,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void MouseHoldHandler()
         {
-            if(!_puzzleManager.PieceIsDragging)
+            if (!_puzzleManager.PieceIsDragging)
             {
                 _pieceStatus = PieceStatus.ClickHold;
                 _boxCollider2D.enabled = false;
