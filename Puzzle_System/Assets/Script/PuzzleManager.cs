@@ -22,11 +22,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private int colCount;
         [SerializeField] private int _tounchedTarget;
         [SerializeField] private int _draggedTarget;
-        [SerializeField] private int[] _answer;
+        [SerializeField] private Vector2[] _answer;
         [SerializeField] private int[] _solvingField;
         [SerializeField] private float _pieceGap;
         [SerializeField] private GamePhase _playerProgress;
-        [SerializeField] private Dictionary<int, Vector3> _numToPosition;
+        [SerializeField] private Vector2[] _numToPosition;
         private int _totalPiece;
         public bool PieceIsDragging
         {
@@ -71,6 +71,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
             Debug.Assert(_answer.Length == _solvingField.Length);
 
             _totalPiece = _puzzlePieces.Length;
+            Debug.Log("totalPiece" + _totalPiece);
             _pieceIsDragging = false;
 
             //get the size of the pieces so that we can set up the puzzle
@@ -86,7 +87,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
             //SetPieceNumber();
 
             //Instantiate a dictionary
-            _numToPosition = new Dictionary<int, Vector3>();
+            _numToPosition = new Vector2[_totalPiece];
+            _answer = new Vector2[_totalPiece];
 
             //Set the game Progress to very beginning
             _playerProgress = GamePhase.FirstStep;
@@ -99,10 +101,32 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         private void StorePiecePosition()
         {
-            for(int i = 0; i < _totalPiece; i++)
+
+            GameObject[] pieces = GameObject.FindGameObjectsWithTag("PuzzlePiece");
+            Debug.Log("Piece I find: " + pieces.Length);
+            for(int i = 0; i < pieces.Length; i++)
             {
-                _numToPosition.Add(i, _puzzlePieces[i].transform.position);
+                _numToPosition[pieces[i].GetComponent<PuzzlePieceBehavior>().PieceNumber] = pieces[i].transform.position;
             }
+
+
+            Vector2 botLeftPoint = GetBotLeftPoint();
+            for (int i = 0; i < colCount; i++)
+            {
+                for (int j = 0; j < rowCount; j++)
+                {
+                    int target = i * rowCount + j;
+                    //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
+                    Vector2 newPosition = new Vector2(botLeftPoint.x + j * (_pieceWidth + _pieceGap), botLeftPoint.y + i * (_pieceHeight + _pieceGap));
+                    Debug.Log(target);
+                    _answer[target] = _puzzlePieces[target].transform.position;
+                }
+            }
+
+            /*for (int i = 0; i < _totalPiece; i++)
+            {
+                Debug.Log(i + " the position is: " + _puzzlePieces[i].transform.position);
+            }*/
         }
 
         private void OrderPuzzle()
@@ -191,10 +215,10 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _puzzlePieces[_draggedTarget] = _puzzlePieces[_tounchedTarget];
             _puzzlePieces[_tounchedTarget] = tempPPB;
 
-            if(CheckAnswer(_solvingField, _answer))
+            /*if(CheckAnswer(_solvingField, _answer))
             {
                 Debug.Log("You win!");
-            }
+            }*/
 
         }
 

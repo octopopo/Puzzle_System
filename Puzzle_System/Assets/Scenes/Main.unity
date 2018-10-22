@@ -164,7 +164,7 @@ Prefab:
     - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
       propertyPath: _pieceNumber
-      value: 5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
@@ -252,7 +252,7 @@ Prefab:
     - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
       propertyPath: _pieceNumber
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
@@ -362,6 +362,11 @@ Prefab:
         type: 2}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
+        type: 2}
+      propertyPath: _pieceNumber
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
@@ -1055,7 +1060,7 @@ Prefab:
     - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
       propertyPath: _pieceNumber
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
@@ -1143,7 +1148,7 @@ Prefab:
     - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
       propertyPath: _pieceNumber
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
@@ -1325,7 +1330,7 @@ Prefab:
     - target: {fileID: 114648007002080894, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
       propertyPath: _pieceNumber
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
