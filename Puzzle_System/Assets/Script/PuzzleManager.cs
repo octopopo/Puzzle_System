@@ -5,6 +5,13 @@ using UnityEngine;
 
 namespace PuzzleSystem.PuzzleManagers.V1
 {
+    public enum GamePhase
+    {
+        FirstStep,
+        SecondStep,
+        ThirdStep,
+        FourthStep
+    }
     public class PuzzleManager : MonoBehaviour
     {
         [SerializeField] private PuzzlePieceBehavior[] _puzzlePieces;
@@ -18,6 +25,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private int[] _answer;
         [SerializeField] private int[] _solvingField;
         [SerializeField] private float _pieceGap;
+        [SerializeField] private GamePhase _playerProgress;
         public bool PieceIsDragging
         {
             set
@@ -59,13 +67,23 @@ namespace PuzzleSystem.PuzzleManagers.V1
             //make sure we have enough puzzle pieces
             Debug.Assert((rowCount * colCount) == _puzzlePieces.Length);
             Debug.Assert(_answer.Length == _solvingField.Length);
+
             _pieceIsDragging = false;
+
+            //get the size of the pieces so that we can set up the puzzle
             _pieceWidth = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.x;
             _pieceHeight = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.y;
+
             _tounchedTarget = -1;
             _draggedTarget = -1;
+
+            //These part might not been used
+            //set up the piece in the order
             OrderPuzzle();
-            SetPieceNumber();
+            //SetPieceNumber();
+
+            //Set the game Progress to very beginning
+            _playerProgress = GamePhase.FirstStep;
         }
 
         private void OrderPuzzle()
