@@ -24,7 +24,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         private Color _lastColor;
         private float _clickedTime;
         [SerializeField] private int _pieceNumber;
-        [SerializeField] private int _solvingNumber;
+        //[SerializeField] private int _solvingNumber;
 
         public int PieceNumber
         {
@@ -38,7 +38,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
             }
         }
 
-        public int SolvingNumber
+        /*public int SolvingNumber
         {
             set
             {
@@ -48,7 +48,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
             {
                 return _solvingNumber;
             }
-        }
+        }*/
 
         // Use this for initialization
         void Start()
@@ -129,7 +129,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         {
             if (_puzzleManager.PieceIsDragging)
             {
-                _puzzleManager.TouchedTarget = SolvingNumber;
+                _puzzleManager.TouchedTarget = _pieceNumber;
             }
         }
 
@@ -145,7 +145,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _pieceStatus = PieceStatus.ClickHold;
                 _boxCollider2D.enabled = false;
                 _puzzleManager.PieceIsDragging = true;
-                _puzzleManager.DraggedTarget = SolvingNumber;
+                _puzzleManager.DraggedTarget = _pieceNumber;
                 _lastPosition = transform.position;
                 _lastColor = _spriteRenderer.color;
                 _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 0.3f);

@@ -23,7 +23,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private int _tounchedTarget;
         [SerializeField] private int _draggedTarget;
         [SerializeField] private Vector2[] _answer;
-        [SerializeField] private int[] _solvingField;
+        //[SerializeField] private int[] _solvingField;
         [SerializeField] private float _pieceGap;
         [SerializeField] private GamePhase _playerProgress;
         [SerializeField] private Vector2[] _numToPosition;
@@ -68,7 +68,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         {
             //make sure we have enough puzzle pieces
             Debug.Assert((rowCount * colCount) == _puzzlePieces.Length);
-            Debug.Assert(_answer.Length == _solvingField.Length);
+            //Debug.Assert(_answer.Length == _solvingField.Length);
 
             _totalPiece = _puzzlePieces.Length;
             Debug.Log("totalPiece" + _totalPiece);
@@ -122,11 +122,6 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _answer[target] = _puzzlePieces[target].transform.position;
                 }
             }
-
-            /*for (int i = 0; i < _totalPiece; i++)
-            {
-                Debug.Log(i + " the position is: " + _puzzlePieces[i].transform.position);
-            }*/
         }
 
         private void OrderPuzzle()
@@ -181,12 +176,12 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         public void SetPieceNumber()
         {
-            Debug.Assert(_solvingField.Length == _puzzlePieces.Length);
+            /*Debug.Assert(_solvingField.Length == _puzzlePieces.Length);
             for(int i = 0; i < _solvingField.Length; i++)
             {
                 _puzzlePieces[i].PieceNumber = _solvingField[i];
-                _puzzlePieces[i].SolvingNumber = i;
-            }
+                //_puzzlePieces[i].SolvingNumber = i;
+            }*/
         }
 
         // Update is called once per frame
@@ -198,7 +193,19 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         public void SwapPosition(Vector3 firstLastPosition)
         {
-            Transform firstTransform = _puzzlePieces[_draggedTarget].transform;
+            //int firstPieceNum = _puzzlePieces[_draggedTarget].GetComponent<PuzzlePieceBehavior>().PieceNumber;
+            //int secondPieceNum = _puzzlePieces[_tounchedTarget].GetComponent<PuzzlePieceBehavior>().PieceNumber;
+
+            //swap the position of the real object
+            _puzzlePieces[_draggedTarget].transform.position = _numToPosition[_tounchedTarget];
+            _puzzlePieces[_tounchedTarget].transform.position = _numToPosition[_draggedTarget];
+
+            //swap the positoin in the dictionary
+            _numToPosition[_draggedTarget] = _puzzlePieces[_draggedTarget].transform.position;
+            _numToPosition[_tounchedTarget] = _puzzlePieces[_tounchedTarget].transform.position;
+
+
+            /*Transform firstTransform = _puzzlePieces[_draggedTarget].transform;
             Transform secondTransform = _puzzlePieces[_tounchedTarget].transform;
 
             firstTransform.position = secondTransform.position;
@@ -213,7 +220,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             PuzzlePieceBehavior tempPPB = _puzzlePieces[_draggedTarget];
             _puzzlePieces[_draggedTarget] = _puzzlePieces[_tounchedTarget];
-            _puzzlePieces[_tounchedTarget] = tempPPB;
+            _puzzlePieces[_tounchedTarget] = tempPPB;*/
 
             /*if(CheckAnswer(_solvingField, _answer))
             {
