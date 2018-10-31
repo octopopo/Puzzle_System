@@ -64,16 +64,29 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _pieceIsDragging: 0
   _pieceWidth: 0
   _pieceHeight: 0
-  rowCount: 4
+  rowCount: 3
   colCount: 4
   _tounchedTarget: 0
   _draggedTarget: 0
-  _answer: 000000000100000002000000030000000400000005000000
-  _solvingField: 020000000400000005000000010000000300000000000000
+  _answer:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  _pieceGap: 0.5
+  _playerProgress: 0
+  _numToPosition: []
+  _mainCamera: {fileID: 0}
+  _videoPlayer: {fileID: 0}
+  _skipButton: {fileID: 0}

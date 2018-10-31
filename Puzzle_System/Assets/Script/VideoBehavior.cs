@@ -8,12 +8,14 @@ public class VideoBehavior : MonoBehaviour {
     public RawImage _rawImage;
     public VideoPlayer _videoPlayer;
     public VideoClip[] _videoClips;
+    public Button _skipButton;
 
 
     // Use this for initialization
     void Start() {
         //Hide the video player at the beginning
         _rawImage.gameObject.SetActive(false);
+        _skipButton.onClick.AddListener(HideAndStop);
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class VideoBehavior : MonoBehaviour {
     public void HideAndStop()
     {
         _rawImage.gameObject.SetActive(false);
+        StopCoroutine(PlayVideo());
         _videoPlayer.Stop();
     }
 

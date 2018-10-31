@@ -54,6 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rawImage: {fileID: 0}
   _videoPlayer: {fileID: 328425938999130688}
+  _videoClips: []
+  _skipButton: {fileID: 0}
 --- !u!328 &328425938999130688
 VideoPlayer:
   m_ObjectHideFlags: 1

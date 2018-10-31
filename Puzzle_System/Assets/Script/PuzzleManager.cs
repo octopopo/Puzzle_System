@@ -30,6 +30,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private Vector2[] _numToPosition;
 
         public CameraBehavior _mainCamera;
+        public VideoBehavior _videoPlayer;
         public Button _skipButton;
         //[SerializeField] private int[] _puzzleSetup;
         private int _totalPiece;
@@ -102,6 +103,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
             StorePiecePosition();
             HideAllPieces();
             GameProgessTracktor();
+
+            _skipButton.onClick.AddListener(GameProgessTracktor);
         }
 
         private void StorePiecePosition()
@@ -245,21 +248,24 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
                     {
                         _playerProgress = GamePhase.SecondStep;
-                        GameProgessTracktor();
+                        _videoPlayer.DisplayAndPlay();
+                        //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.SecondStep:
                     if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
                     {
                         _playerProgress = GamePhase.ThirdStep;
-                        GameProgessTracktor();
+                        _videoPlayer.DisplayAndPlay();
+                        //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.ThirdStep:
                     if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
                     {
                         _playerProgress = GamePhase.FourthStep;
-                        GameProgessTracktor();
+                        _videoPlayer.DisplayAndPlay();
+                        //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.FourthStep:
@@ -283,7 +289,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         private void GameProgessTracktor()
         {
-            Debug.Log("Track the game progress");
+            //Debug.Log("Track the game progress");
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
