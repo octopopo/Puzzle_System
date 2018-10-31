@@ -123,7 +123,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     Vector2 newPosition = new Vector2(botLeftPoint.x + i * (_pieceWidth + _pieceGap), botLeftPoint.y + j * (_pieceHeight + _pieceGap));
                     newPosition.x = Mathf.Round(newPosition.x * 100) / 100;
                     newPosition.y = Mathf.Round(newPosition.y * 100) / 100;
-                    Debug.Log(target);
+                    //Debug.Log(target);
                     _answer[target] = newPosition;
                 }
             }
@@ -193,7 +193,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         void Update()
         {
             //Add it for debug
-            GameProgessTracktor();
+            //GameProgessTracktor();
         }
 
         public void SwapPosition(Vector3 firstLastPosition)
@@ -243,18 +243,21 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
                     {
                         _playerProgress = GamePhase.SecondStep;
+                        GameProgessTracktor();
                     }
                     break;
                 case GamePhase.SecondStep:
                     if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
                     {
                         _playerProgress = GamePhase.ThirdStep;
+                        GameProgessTracktor();
                     }
                     break;
                 case GamePhase.ThirdStep:
                     if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
                     {
                         _playerProgress = GamePhase.FourthStep;
+                        GameProgessTracktor();
                     }
                     break;
                 case GamePhase.FourthStep:
@@ -278,21 +281,23 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         private void GameProgessTracktor()
         {
+            Debug.Log("Track the game progress");
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
+                    mainCamera.ChangeCameraPhase(0);
                     _puzzlePieces[0].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[1].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     //The starting point should not be draggable
                     _puzzlePieces[1].SetIsDraggable(true);
-                    mainCamera.ChangeCameraPhase(1);
+                    mainCamera.ChangeCameraPhase(0);
                     break;
                 case GamePhase.SecondStep:
                     _puzzlePieces[2].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[5].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[2].SetIsDraggable(true);
                     _puzzlePieces[5].SetIsDraggable(true);
-                    mainCamera.ChangeCameraPhase(2);
+                    mainCamera.ChangeCameraPhase(1);
                     break;
                 case GamePhase.ThirdStep:
                     _puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -303,7 +308,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[4].SetIsDraggable(true);
                     _puzzlePieces[6].SetIsDraggable(true);
                     _puzzlePieces[7].SetIsDraggable(true);
-                    mainCamera.ChangeCameraPhase(3);
+                    mainCamera.ChangeCameraPhase(2);
                     break;
                 case GamePhase.FourthStep:
                     _puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -314,7 +319,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[8].SetIsDraggable(true);
                     _puzzlePieces[10].SetIsDraggable(true);
                     _puzzlePieces[11].SetIsDraggable(true);
-                    mainCamera.ChangeCameraPhase(4);
+                    mainCamera.ChangeCameraPhase(3);
                     break;
                 default:
                     break;
