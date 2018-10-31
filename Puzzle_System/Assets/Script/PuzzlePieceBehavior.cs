@@ -25,6 +25,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         private float _clickedTime;
         [SerializeField] private int _pieceNumber;
         //[SerializeField] private int _solvingNumber;
+        [SerializeField] bool _isDraggable;
 
         public int PieceNumber
         {
@@ -54,6 +55,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         void Start()
         {
             _pieceStatus = PieceStatus.Unclicked;
+            _isDraggable = false;
         }
 
         // Update is called once per frame
@@ -89,17 +91,20 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         private void OnMouseDown()
         {
-            if (_pieceStatus == PieceStatus.FirstClicked && ((_clickedTime + _doubleClickDelta) >= Time.time))
+            if (_isDraggable)
             {
-                //Debug.Log("Double Clicked");
-                DoubleClickedHandler();
-                _pieceStatus = PieceStatus.Unclicked;
-                _clickedTime = 0.0f;
-            }
-            else if (_pieceStatus == PieceStatus.Unclicked)
-            {
-                _clickedTime = Time.time;
-                _pieceStatus = PieceStatus.FirstClicked;
+                if (_pieceStatus == PieceStatus.FirstClicked && ((_clickedTime + _doubleClickDelta) >= Time.time))
+                {
+                    //Debug.Log("Double Clicked");
+                    DoubleClickedHandler();
+                    _pieceStatus = PieceStatus.Unclicked;
+                    _clickedTime = 0.0f;
+                }
+                else if (_pieceStatus == PieceStatus.Unclicked)
+                {
+                    _clickedTime = Time.time;
+                    _pieceStatus = PieceStatus.FirstClicked;
+                }
             }
         }
 
@@ -150,6 +155,11 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _lastColor = _spriteRenderer.color;
                 _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 0.3f);
             }
+        }
+
+        public void SetIsDraggable(bool draggable)
+        {
+            _isDraggable = draggable;
         }
     }
 }

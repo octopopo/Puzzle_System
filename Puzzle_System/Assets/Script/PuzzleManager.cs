@@ -27,6 +27,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private float _pieceGap;
         [SerializeField] private GamePhase _playerProgress;
         [SerializeField] private Vector2[] _numToPosition;
+        //[SerializeField] private int[] _puzzleSetup;
         private int _totalPiece;
         public bool PieceIsDragging
         {
@@ -117,9 +118,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 {
                     int target = i * rowCount + j;
                     //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
-                    Vector2 newPosition = new Vector2(botLeftPoint.x + j * (_pieceWidth + _pieceGap), botLeftPoint.y + i * (_pieceHeight + _pieceGap));
+                    Vector2 newPosition = new Vector2(botLeftPoint.x + i * (_pieceWidth + _pieceGap), botLeftPoint.y + j * (_pieceHeight + _pieceGap));
+                    newPosition.x = Mathf.Round(newPosition.x * 100) / 100;
+                    newPosition.y = Mathf.Round(newPosition.y * 100) / 100;
                     Debug.Log(target);
-                    _answer[target] = _puzzlePieces[target].transform.position;
+                    _answer[target] = newPosition;
                 }
             }
         }
@@ -204,6 +207,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _numToPosition[_draggedTarget] = _puzzlePieces[_draggedTarget].transform.position;
             _numToPosition[_tounchedTarget] = _puzzlePieces[_tounchedTarget].transform.position;
 
+            CheckAnswer();
 
             /*Transform firstTransform = _puzzlePieces[_draggedTarget].transform;
             Transform secondTransform = _puzzlePieces[_tounchedTarget].transform;
@@ -229,24 +233,44 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         }
 
-        private bool CheckAnswer(int[] arr1, int[] arr2)
+        private void CheckAnswer()
         {
-            for(int i = 0; i < arr1.Length; i++)
+            switch(_playerProgress)
             {
-                if(arr1[i] != arr2[i])
-                {
-                    return false;
-                }
+                case GamePhase.FirstStep:
+                    if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
+                    {
+                        _playerProgress = GamePhase.SecondStep;
+                    }
+                    break;
+                case GamePhase.SecondStep:
+                    if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
+                    {
+                        _playerProgress = GamePhase.ThirdStep;
+                    }
+                    break;
+                case GamePhase.ThirdStep:
+                    if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
+                    {
+                        _playerProgress = GamePhase.FourthStep;
+                    }
+                    break;
+                case GamePhase.FourthStep:
+                    if (_answer[8] == _numToPosition[8] && _answer[9] == _numToPosition[9] && _answer[10] == _numToPosition[10] && _answer[11] == _numToPosition[11])
+                    {
+                        Debug.Log("You win");
+                    }
+                    break;
             }
-
-            return true;
         }
 
         private void HideAllPieces()
         {
             for (int i = 0; i < _puzzlePieces.Length; i++)
             {
-                _puzzlePieces[i].gameObject.SetActive(false);
+                //_puzzlePieces[i].gameObject.SetActive(false);
+                _puzzlePieces[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                _puzzlePieces[i].SetIsDraggable(false);
             }
         }
 
@@ -255,24 +279,36 @@ namespace PuzzleSystem.PuzzleManagers.V1
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
-                    _puzzlePieces[0].gameObject.SetActive(true);
-                    _puzzlePieces[1].gameObject.SetActive(true);
+                    _puzzlePieces[0].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[1].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //The starting point should not be draggable
+                    _puzzlePieces[1].SetIsDraggable(true);
                     break;
                 case GamePhase.SecondStep:
-                    _puzzlePieces[2].gameObject.SetActive(true);
-                    _puzzlePieces[5].gameObject.SetActive(true);
+                    _puzzlePieces[2].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[5].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[2].SetIsDraggable(true);
+                    _puzzlePieces[5].SetIsDraggable(true);
                     break;
                 case GamePhase.ThirdStep:
-                    _puzzlePieces[3].gameObject.SetActive(true);
-                    _puzzlePieces[4].gameObject.SetActive(true);
-                    _puzzlePieces[6].gameObject.SetActive(true);
-                    _puzzlePieces[7].gameObject.SetActive(true);
+                    _puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[4].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[7].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[3].SetIsDraggable(true);
+                    _puzzlePieces[4].SetIsDraggable(true);
+                    _puzzlePieces[6].SetIsDraggable(true);
+                    _puzzlePieces[7].SetIsDraggable(true);
                     break;
                 case GamePhase.FourthStep:
-                    _puzzlePieces[8].gameObject.SetActive(true);
-                    _puzzlePieces[9].gameObject.SetActive(true);
-                    _puzzlePieces[10].gameObject.SetActive(true);
-                    _puzzlePieces[11].gameObject.SetActive(true);
+                    _puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[9].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[10].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[11].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //The destination should not be draggable
+                    _puzzlePieces[8].SetIsDraggable(true);
+                    _puzzlePieces[10].SetIsDraggable(true);
+                    _puzzlePieces[11].SetIsDraggable(true);
                     break;
                 default:
                     break;
