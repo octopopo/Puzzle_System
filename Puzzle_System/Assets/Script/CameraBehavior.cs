@@ -7,12 +7,15 @@ public class CameraBehavior : MonoBehaviour {
     [SerializeField] Vector2[] _cameraPosition;
     //The size would affect the visual area
     [SerializeField] float[] _cameraSize;
-    private Camera _cameraComponent;
+    [SerializeField] private Camera _cameraComponent;
     int gamePhase = 0;
 
 	// Use this for initialization
 	void Start () {
-        _cameraComponent = GetComponent<Camera>();
+        if (_cameraComponent == null)
+        {
+            _cameraComponent = GetComponent<Camera>();
+        }
 	}
 	
 	// Update is called once per frame

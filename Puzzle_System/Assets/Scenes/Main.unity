@@ -482,6 +482,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraComponent
+      value: 
+      objectReference: {fileID: 1855780427}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2664ddcf75179d442a008b6477c30edc, type: 2}
   m_IsPrefabAsset: 0
@@ -1693,6 +1698,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1750892290}
   m_Script: {fileID: 11500000, guid: b12328121fd97b946a6adb76b42bde35, type: 3}
+--- !u!20 &1855780427 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20036497530009564, guid: 2664ddcf75179d442a008b6477c30edc,
+    type: 2}
+  m_PrefabInternal: {fileID: 143691456}
 --- !u!1001 &1896644642
 Prefab:
   m_ObjectHideFlags: 0
