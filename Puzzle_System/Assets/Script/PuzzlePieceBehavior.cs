@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using PuzzleSystem.PuzzleManagers.V1;
 using UnityEngine;
+using System.Drawing;
 
 namespace PuzzleSystem.PuzzlePiece.V1
 {
@@ -21,7 +22,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private PuzzleManager _puzzleManager;
         [SerializeField] private BoxCollider2D _boxCollider2D;
         private Vector3 _lastPosition;
-        private Color _lastColor;
+        private UnityEngine.Color _lastColor;
         private float _clickedTime;
         [SerializeField] private int _pieceNumber;
         //[SerializeField] private int _solvingNumber;
@@ -123,7 +124,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
             {
                 _pieceStatus = PieceStatus.Unclicked;
                 _clickedTime = 0.0f;
-                _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
+                _spriteRenderer.color = new UnityEngine.Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
                 _puzzleManager.PieceIsDragging = false;
                 _boxCollider2D.enabled = true;
                 if (_puzzleManager.TouchedTarget == -1)
@@ -162,7 +163,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _puzzleManager.DraggedTarget = _pieceNumber;
                 _lastPosition = transform.position;
                 _lastColor = _spriteRenderer.color;
-                _spriteRenderer.color = new Color(_lastColor.r, _lastColor.g, _lastColor.b, 0.3f);
+                _spriteRenderer.color = new UnityEngine.Color(_lastColor.r, _lastColor.g, _lastColor.b, 0.3f);
             }
         }
 
