@@ -26,6 +26,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private int _pieceNumber;
         //[SerializeField] private int _solvingNumber;
         [SerializeField] bool _isDraggable;
+        [SerializeField] private GameObject _childVideoPlayer;
 
         public int PieceNumber
         {
@@ -36,6 +37,14 @@ namespace PuzzleSystem.PuzzlePiece.V1
             get
             {
                 return _pieceNumber;
+            }
+        }
+
+        public GameObject ChildVideoPlayer
+        {
+            get
+            {
+                return _childVideoPlayer;
             }
         }
 
@@ -160,6 +169,11 @@ namespace PuzzleSystem.PuzzlePiece.V1
         public void SetIsDraggable(bool draggable)
         {
             _isDraggable = draggable;
+        }
+
+        public void SetVideoPlayerVisible(bool isVisible)
+        {
+            _childVideoPlayer.SetActive(isVisible);
         }
     }
 }

@@ -9,6 +9,7 @@ public class VideoBehavior : MonoBehaviour {
     public VideoPlayer _videoPlayer;
     public VideoClip[] _videoClips;
     public Button _skipButton;
+    public SpriteRenderer[] _piecesSprite;
 
 
     // Use this for initialization
@@ -21,6 +22,7 @@ public class VideoBehavior : MonoBehaviour {
     // Update is called once per frame
     IEnumerator PlayVideo()
     {
+        _videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         _videoPlayer.Prepare();
         while(!_videoPlayer.isPrepared)
         {
@@ -46,5 +48,25 @@ public class VideoBehavior : MonoBehaviour {
     public void ChangeVideo(int videoNum)
     {
 
+    }
+
+    public void DisplayAndPlayOnPieces(int num)
+    {
+        StartCoroutine(PlayVideoOnPiece(num));
+        
+    }
+
+    IEnumerator PlayVideoOnPiece(int num)
+    {
+        _videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
+        //_videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+        _videoPlayer.Prepare();
+        while (!_videoPlayer.isPrepared)
+        {
+            yield return null;
+        }
+        _videoPlayer.targetMaterialRenderer = _piecesSprite[num];
+        //_piecesSprite[0].material.mainTexture = _videoPlayer.texture;
+        _videoPlayer.Play();
     }
 }

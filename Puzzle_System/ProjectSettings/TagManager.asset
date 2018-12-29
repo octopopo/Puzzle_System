@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: VideoPlayer
+    uniqueID: 4167618129
+    locked: 0
   - name: Button
     uniqueID: 3440619257
     locked: 0
