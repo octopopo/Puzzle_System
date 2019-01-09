@@ -27,7 +27,16 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private int _pieceNumber;
         //[SerializeField] private int _solvingNumber;
         [SerializeField] bool _isDraggable;
-        [SerializeField] private GameObject _childVideoPlayer;
+        private GifHandler _gifHandler;
+        List<Sprite> gifList;
+        int gifLength;
+        int showingPiece;
+        public float playSpeed = 0.1f;
+        float playCount;
+        public bool playingGif;
+
+        //The path can be change here
+        private string _gifPath = "Assets/Texture/Gif/";
 
         public int PieceNumber
         {
@@ -38,14 +47,6 @@ namespace PuzzleSystem.PuzzlePiece.V1
             get
             {
                 return _pieceNumber;
-            }
-        }
-
-        public GameObject ChildVideoPlayer
-        {
-            get
-            {
-                return _childVideoPlayer;
             }
         }
 
@@ -66,6 +67,28 @@ namespace PuzzleSystem.PuzzlePiece.V1
         {
             _pieceStatus = PieceStatus.Unclicked;
             _isDraggable = false;
+
+            _gifHandler = new GifHandler();
+
+            //0103, read the image with System.Drawing
+            string mGif = _gifPath + _pieceNumber + ".gif";
+            //Debug.Log("This piece is " + name + " and the path is " + mGif);
+            Image fileImage = Image.FromFile(mGif);
+            gifList = _gifHandler.GifToSpriteList(fileImage);
+            Debug.Log("I am " + name + " and the list I've got has " + gifList.Count);
+
+            //This part is just for testing purpose
+            if(_pieceNumber == 0)
+            {
+                _spriteRenderer.sprite = gifList[0];
+            }
+            //End part
+
+            //This part is for initailize the animation of the gif
+            gifLength = gifList.Count;
+            showingPiece = 0;
+            playCount = 0;
+            playingGif = false;
         }
 
         // Update is called once per frame
@@ -97,6 +120,8 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 Vector3 newMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10));
                 transform.position = new Vector3(newMousePos.x, newMousePos.y, 0);
             }
+
+            PlayingAnimation();
         }
 
         private void OnMouseDown()
@@ -172,9 +197,30 @@ namespace PuzzleSystem.PuzzlePiece.V1
             _isDraggable = draggable;
         }
 
-        public void SetVideoPlayerVisible(bool isVisible)
+        public void PlayGifAnimation()
         {
-            _childVideoPlayer.SetActive(isVisible);
+            playingGif = true;
         }
+
+        public void PlayingAnimation()
+        {
+            if (playingGif == true)
+            {
+                playCount += Time.deltaTime;
+                if (playCount > playSpeed)
+                {
+                    playCount = 0;
+                    showingPiece++;
+                    if (showingPiece >= gifLength)
+                    {
+                        showingPiece = 0;
+                        playingGif = false;
+                    }
+                    _spriteRenderer.sprite = gifList[showingPiece];
+                }
+            }
+        }
+
+
     }
 }

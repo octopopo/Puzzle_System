@@ -107,7 +107,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _skipButton.onClick.AddListener(GameProgessTracktor);
 
             //Test, play video at the begninning
-            _videoPlayer.DisplayAndPlayOnPieces(0);
+            //We might not be using this
+            //_videoPlayer.DisplayAndPlayOnPieces(0);
         }
 
         private void StorePiecePosition()
