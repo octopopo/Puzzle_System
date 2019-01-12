@@ -34,6 +34,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
         public Button _skipButton;
         //[SerializeField] private int[] _puzzleSetup;
         private int _totalPiece;
+        private bool isPosSet = false;
+
         public bool PieceIsDragging
         {
             set
@@ -203,6 +205,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
         {
             //Add it for debug
             //GameProgessTracktor();
+            if(!isPosSet)
+            {
+                StorePiecePosition();
+                isPosSet = true;
+            }
         }
 
         public void SwapPosition(Vector3 firstLastPosition)
@@ -293,7 +300,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         private void GameProgessTracktor()
         {
-            //Debug.Log("Track the game progress");
+            //The Camera Behavior was temporary commented out
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
@@ -301,14 +308,14 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[1].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     //The starting point should not be draggable
                     _puzzlePieces[1].SetIsDraggable(true);
-                    _mainCamera.ChangeCameraPhase(0);
+                    //_mainCamera.ChangeCameraPhase(0);
                     break;
                 case GamePhase.SecondStep:
                     _puzzlePieces[2].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[5].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[2].SetIsDraggable(true);
                     _puzzlePieces[5].SetIsDraggable(true);
-                    _mainCamera.ChangeCameraPhase(1);
+                    //_mainCamera.ChangeCameraPhase(1);
                     break;
                 case GamePhase.ThirdStep:
                     _puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -319,7 +326,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[4].SetIsDraggable(true);
                     _puzzlePieces[6].SetIsDraggable(true);
                     _puzzlePieces[7].SetIsDraggable(true);
-                    _mainCamera.ChangeCameraPhase(2);
+                    //_mainCamera.ChangeCameraPhase(2);
                     break;
                 case GamePhase.FourthStep:
                     _puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -330,7 +337,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[8].SetIsDraggable(true);
                     _puzzlePieces[10].SetIsDraggable(true);
                     _puzzlePieces[11].SetIsDraggable(true);
-                    _mainCamera.ChangeCameraPhase(3);
+                    //_mainCamera.ChangeCameraPhase(3);
                     break;
                 default:
                     break;

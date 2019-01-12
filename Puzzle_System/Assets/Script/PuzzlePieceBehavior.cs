@@ -78,7 +78,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
             Debug.Log("I am " + name + " and the list I've got has " + gifList.Count);
 
             //This part is just for testing purpose
-            if(_pieceNumber == 0)
+            if(_pieceNumber == 0 || _pieceNumber == 1)
             {
                 _spriteRenderer.sprite = gifList[0];
             }
