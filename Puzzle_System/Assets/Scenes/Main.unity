@@ -492,6 +492,11 @@ Prefab:
       propertyPath: _cameraComponent
       value: 
       objectReference: {fileID: 1855780427}
+    - target: {fileID: 20036497530009564, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2664ddcf75179d442a008b6477c30edc, type: 2}
   m_IsPrefabAsset: 0
