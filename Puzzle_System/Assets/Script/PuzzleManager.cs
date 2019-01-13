@@ -132,8 +132,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     int target = i * rowCount + j;
                     //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
                     Vector2 newPosition = new Vector2(botLeftPoint.x + i * (_pieceWidth + _pieceGap), botLeftPoint.y + j * (_pieceHeight + _pieceGap));
-                    newPosition.x = Mathf.Round(newPosition.x * 100) / 100;
-                    newPosition.y = Mathf.Round(newPosition.y * 100) / 100;
+                    newPosition.x = Mathf.Round(newPosition.x * 1000) / 1000;
+                    newPosition.y = Mathf.Round(newPosition.y * 1000) / 1000;
                     //Debug.Log(target);
                     _answer[target] = newPosition;
                 }
