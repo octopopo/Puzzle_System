@@ -73,7 +73,8 @@ public class GifHandler{
                     }
                 }
                 frameTexture2D.Apply();
-                Sprite nSprite = Sprite.Create(frameTexture2D, new Rect(0.0f, 0.0f, frameTexture2D.width, frameTexture2D.height), new Vector2(0.0f, 0.0f));
+                //Sprite nSprite = Sprite.Create(frameTexture2D, new Rect(0.0f, 0.0f, frameTexture2D.width, frameTexture2D.height), new Vector2(-frameTexture2D.width/2.0f, -frameTexture2D.height/2.0f));
+                Sprite nSprite = Sprite.Create(frameTexture2D, new Rect(0.0f, 0.0f, frameTexture2D.width, frameTexture2D.height), new Vector2(0.5f, 0.5f));
                 spriteArray.Add(nSprite);
             }
         }

@@ -91,7 +91,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             //These part might not been used
             //set up the piece in the order
-            //OrderPuzzle();
+            OrderPuzzle();
             //SetPieceNumber();
 
             //Instantiate a dictionary
