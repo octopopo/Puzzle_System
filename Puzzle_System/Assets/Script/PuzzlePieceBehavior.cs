@@ -27,6 +27,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private int _pieceNumber;
         [SerializeField] private int _solvingNumber;
         [SerializeField] bool _isDraggable;
+        [SerializeField] bool _isSwappable;
         private GifHandler _gifHandler;
         List<Sprite> gifList;
         int gifLength;
@@ -47,6 +48,22 @@ namespace PuzzleSystem.PuzzlePiece.V1
             get
             {
                 return _pieceNumber;
+            }
+        }
+
+        public bool IsDraggable
+        {
+            get
+            {
+                return _isDraggable;
+            }
+        }
+
+        public bool IsSwappable
+        {
+            get
+            {
+                return _isSwappable;
             }
         }
 
@@ -89,6 +106,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
             showingPiece = 0;
             playCount = 0;
             playingGif = false;
+            _isSwappable = true;
 
             DetectSpot();
         }
@@ -122,8 +140,6 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 Vector3 newMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 10));
                 transform.position = new Vector3(newMousePos.x, newMousePos.y, 0);
             }
-
-            PlayingAnimation();
         }
 
         private void OnMouseDown()
@@ -154,7 +170,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _spriteRenderer.color = new UnityEngine.Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
                 _puzzleManager.PieceIsDragging = false;
                 _boxCollider2D.enabled = true;
-                if (_puzzleManager.TouchedTarget == -1)
+                if (!_puzzleManager.CanSwap())
                 {
                     transform.position = _lastPosition;
                 }
@@ -199,30 +215,10 @@ namespace PuzzleSystem.PuzzlePiece.V1
             _isDraggable = draggable;
         }
 
-        public void PlayGifAnimation()
+        public void SetIsSwappable(bool swappable)
         {
-            playingGif = true;
+            _isSwappable = swappable;
         }
-
-        public void PlayingAnimation()
-        {
-            if (playingGif == true)
-            {
-                playCount += Time.deltaTime;
-                if (playCount > playSpeed)
-                {
-                    playCount = 0;
-                    showingPiece++;
-                    if (showingPiece >= gifLength)
-                    {
-                        showingPiece = 0;
-                        playingGif = false;
-                    }
-                    _spriteRenderer.sprite = gifList[showingPiece];
-                }
-            }
-        }
-
 
         public IEnumerator playGifRoutine()
         {
@@ -246,7 +242,12 @@ namespace PuzzleSystem.PuzzlePiece.V1
             {
                 _solvingNumber = targetSpot.SpotNum;
             }
-            transform.position = overlappedCollider[0].transform.position;
+            transform.position = new Vector3(overlappedCollider[0].transform.position.x, overlappedCollider[0].transform.position.y, 0);
+        }
+
+        public bool IsAnswerCorrect()
+        {
+            return _pieceNumber == _solvingNumber;
         }
     }
 }

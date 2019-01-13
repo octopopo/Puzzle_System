@@ -91,7 +91,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
             //These part might not been used
             //set up the piece in the order
-            OrderPuzzle();
+            //OrderPuzzle();
             //SetPieceNumber();
 
             //Instantiate a dictionary
@@ -225,6 +225,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _numToPosition[_draggedTarget] = _puzzlePieces[_draggedTarget].transform.position;
             _numToPosition[_tounchedTarget] = _puzzlePieces[_tounchedTarget].transform.position;
 
+
+            //Detect the spot and get it's new number
+            _puzzlePieces[_draggedTarget].DetectSpot();
+            _puzzlePieces[_tounchedTarget].DetectSpot();
+
             CheckAnswer();
 
             /*Transform firstTransform = _puzzlePieces[_draggedTarget].transform;
@@ -256,35 +261,50 @@ namespace PuzzleSystem.PuzzleManagers.V1
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
-                    if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
+                    //if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
+                    if(_puzzlePieces[0].IsAnswerCorrect() && _puzzlePieces[1].IsAnswerCorrect())
                     {
                         _playerProgress = GamePhase.SecondStep;
+                        _puzzlePieces[1].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[0].playGifRoutine());
                         //_videoPlayer.DisplayAndPlay();
                         //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.SecondStep:
-                    if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
+                    //if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
+                    if(_puzzlePieces[2].IsAnswerCorrect() && _puzzlePieces[5].IsAnswerCorrect())
                     {
                         _playerProgress = GamePhase.ThirdStep;
+                        _puzzlePieces[2].SetIsDraggable(false);
+                        _puzzlePieces[5].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[2].playGifRoutine());
                         //_videoPlayer.DisplayAndPlay();
                         //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.ThirdStep:
-                    if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
+                    //if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
+                    if(_puzzlePieces[3].IsAnswerCorrect() && _puzzlePieces[4].IsAnswerCorrect() && _puzzlePieces[6].IsAnswerCorrect() && _puzzlePieces[7].IsAnswerCorrect())
                     {
                         _playerProgress = GamePhase.FourthStep;
+                        _puzzlePieces[3].SetIsDraggable(false);
+                        _puzzlePieces[4].SetIsDraggable(false);
+                        _puzzlePieces[6].SetIsDraggable(false);
+                        _puzzlePieces[7].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[4].playGifRoutine());
                         //_videoPlayer.DisplayAndPlay();
                         //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.FourthStep:
-                    if (_answer[8] == _numToPosition[8] && _answer[9] == _numToPosition[9] && _answer[10] == _numToPosition[10] && _answer[11] == _numToPosition[11])
+                    //if (_answer[8] == _numToPosition[8] && _answer[9] == _numToPosition[9] && _answer[10] == _numToPosition[10] && _answer[11] == _numToPosition[11])
+                    if (_puzzlePieces[8].IsAnswerCorrect() && _puzzlePieces[9].IsAnswerCorrect() && _puzzlePieces[10].IsAnswerCorrect() && _puzzlePieces[11].IsAnswerCorrect())
                     {
+                        _puzzlePieces[8].SetIsDraggable(false);
+                        _puzzlePieces[9].SetIsDraggable(false);
+                        _puzzlePieces[10].SetIsDraggable(false);
+                        _puzzlePieces[11].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[8].playGifRoutine());
                         //Debug.Log("You win");
                     }
@@ -305,12 +325,14 @@ namespace PuzzleSystem.PuzzleManagers.V1
         private void GameProgessTracktor()
         {
             //The Camera Behavior was temporary commented out
+            //each steps should disable the movement of pieces from last move
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
                     _puzzlePieces[0].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[1].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     //The starting point should not be draggable
+                    _puzzlePieces[0].SetIsSwappable(false);
                     _puzzlePieces[1].SetIsDraggable(true);
                     //_mainCamera.ChangeCameraPhase(0);
                     break;
@@ -319,6 +341,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[5].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[2].SetIsDraggable(true);
                     _puzzlePieces[5].SetIsDraggable(true);
+                    _puzzlePieces[1].SetIsSwappable(false);
                     //_mainCamera.ChangeCameraPhase(1);
                     break;
                 case GamePhase.ThirdStep:
@@ -330,6 +353,10 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[4].SetIsDraggable(true);
                     _puzzlePieces[6].SetIsDraggable(true);
                     _puzzlePieces[7].SetIsDraggable(true);
+
+                    _puzzlePieces[2].SetIsSwappable(false);
+                    _puzzlePieces[5].SetIsSwappable(false);
+
                     //_mainCamera.ChangeCameraPhase(2);
                     break;
                 case GamePhase.FourthStep:
@@ -341,6 +368,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[8].SetIsDraggable(true);
                     _puzzlePieces[10].SetIsDraggable(true);
                     _puzzlePieces[11].SetIsDraggable(true);
+
+                    _puzzlePieces[3].SetIsSwappable(false);
+                    _puzzlePieces[4].SetIsSwappable(false);
+                    _puzzlePieces[6].SetIsSwappable(false);
+                    _puzzlePieces[7].SetIsSwappable(false);
                     //_mainCamera.ChangeCameraPhase(3);
                     break;
                 default:
@@ -392,6 +424,15 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     Debug.Log("Someone pass a invalid values to the function");
                     break;
             }
+        }
+
+        public bool CanSwap()
+        {
+            if(TouchedTarget == -1 || !_puzzlePieces[TouchedTarget].IsSwappable)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
