@@ -414,7 +414,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -439,6 +439,21 @@ Prefab:
     - target: {fileID: 1506050835750560, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_Name
       value: PuzzleSpot11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
@@ -679,7 +694,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -704,6 +719,21 @@ Prefab:
     - target: {fileID: 1506050835750560, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_Name
       value: PuzzleSpot7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
@@ -936,7 +966,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -962,6 +992,21 @@ Prefab:
       propertyPath: m_Name
       value: PuzzleSpot4
       objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
   m_IsPrefabAsset: 0
@@ -982,7 +1027,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1008,6 +1053,21 @@ Prefab:
       propertyPath: m_Name
       value: PuzzleSpot5
       objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
   m_IsPrefabAsset: 0
@@ -1028,7 +1088,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1053,6 +1113,21 @@ Prefab:
     - target: {fileID: 1506050835750560, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_Name
       value: PuzzleSpot10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
@@ -1166,7 +1241,7 @@ Prefab:
     - target: {fileID: 212940164053808810, guid: f3cec67f67229304c988b65c073cb8c0,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3cec67f67229304c988b65c073cb8c0, type: 2}
@@ -1276,7 +1351,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1301,6 +1376,21 @@ Prefab:
     - target: {fileID: 1506050835750560, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_Name
       value: PuzzleSpot8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
@@ -1680,7 +1770,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1705,6 +1795,21 @@ Prefab:
     - target: {fileID: 1506050835750560, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_Name
       value: PuzzleSpot1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
@@ -2027,7 +2132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2053,6 +2158,21 @@ Prefab:
       propertyPath: m_Name
       value: PuzzleSpot2
       objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
   m_IsPrefabAsset: 0
@@ -2073,7 +2193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2099,6 +2219,21 @@ Prefab:
       propertyPath: m_Name
       value: PuzzleSpot6
       objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
   m_IsPrefabAsset: 0
@@ -2119,7 +2254,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2145,6 +2280,21 @@ Prefab:
       propertyPath: m_Name
       value: PuzzleSpot3
       objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
   m_IsPrefabAsset: 0
@@ -2165,7 +2315,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2191,6 +2341,21 @@ Prefab:
       propertyPath: m_Name
       value: PuzzleSpot9
       objectReference: {fileID: 0}
+    - target: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: _spotNum
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
   m_IsPrefabAsset: 0
@@ -2211,7 +2376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4648005496052050, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2236,6 +2401,16 @@ Prefab:
     - target: {fileID: 1506050835750560, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}
       propertyPath: m_Name
       value: PuzzleSpot0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61413504294362162, guid: 22879e8899933b2468539ac88ccf17e4,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22879e8899933b2468539ac88ccf17e4, type: 2}

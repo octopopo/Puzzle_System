@@ -117,7 +117,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         {
 
             GameObject[] pieces = GameObject.FindGameObjectsWithTag("PuzzlePiece");
-            Debug.Log("Piece I find: " + pieces.Length);
+            //Debug.Log("Piece I find: " + pieces.Length);
             for(int i = 0; i < pieces.Length; i++)
             {
                 _numToPosition[pieces[i].GetComponent<PuzzlePieceBehavior>().PieceNumber] = pieces[i].transform.position;
@@ -259,7 +259,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
                     {
                         _playerProgress = GamePhase.SecondStep;
-                        _videoPlayer.DisplayAndPlay();
+                        StartCoroutine(_puzzlePieces[0].playGifRoutine());
+                        //_videoPlayer.DisplayAndPlay();
                         //GameProgessTracktor();
                     }
                     break;
@@ -267,7 +268,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
                     {
                         _playerProgress = GamePhase.ThirdStep;
-                        _videoPlayer.DisplayAndPlay();
+                        StartCoroutine(_puzzlePieces[2].playGifRoutine());
+                        //_videoPlayer.DisplayAndPlay();
                         //GameProgessTracktor();
                     }
                     break;
@@ -275,14 +277,16 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
                     {
                         _playerProgress = GamePhase.FourthStep;
-                        _videoPlayer.DisplayAndPlay();
+                        StartCoroutine(_puzzlePieces[4].playGifRoutine());
+                        //_videoPlayer.DisplayAndPlay();
                         //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.FourthStep:
                     if (_answer[8] == _numToPosition[8] && _answer[9] == _numToPosition[9] && _answer[10] == _numToPosition[10] && _answer[11] == _numToPosition[11])
                     {
-                        Debug.Log("You win");
+                        StartCoroutine(_puzzlePieces[8].playGifRoutine());
+                        //Debug.Log("You win");
                     }
                     break;
             }
@@ -340,6 +344,52 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     //_mainCamera.ChangeCameraPhase(3);
                     break;
                 default:
+                    break;
+            }
+        }
+
+        public void GifPlayedHandler(int pieceNum)
+        {
+            switch(pieceNum)
+            {
+                case 0:
+                    StartCoroutine(_puzzlePieces[1].playGifRoutine());
+                    break;
+                case 1:
+                    _videoPlayer.DisplayAndPlay();
+                    break;
+                case 2:
+                    StartCoroutine(_puzzlePieces[5].playGifRoutine());
+                    break;
+                case 3:
+                    StartCoroutine(_puzzlePieces[6].playGifRoutine());
+                    break;
+                case 4:
+                    StartCoroutine(_puzzlePieces[3].playGifRoutine());
+                    break;
+                case 5:
+                    _videoPlayer.DisplayAndPlay();
+                    break;
+                case 6:
+                    StartCoroutine(_puzzlePieces[7].playGifRoutine());
+                    break;
+                case 7:
+                    _videoPlayer.DisplayAndPlay();
+                    break;
+                case 8:
+                    StartCoroutine(_puzzlePieces[11].playGifRoutine());
+                    break;
+                case 9:
+                    Debug.Log("You win!!");
+                    break;
+                case 10:
+                    StartCoroutine(_puzzlePieces[9].playGifRoutine());
+                    break;
+                case 11:
+                    StartCoroutine(_puzzlePieces[10].playGifRoutine());
+                    break;
+                default:
+                    Debug.Log("Someone pass a invalid values to the function");
                     break;
             }
         }

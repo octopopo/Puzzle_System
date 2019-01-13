@@ -25,7 +25,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         private UnityEngine.Color _lastColor;
         private float _clickedTime;
         [SerializeField] private int _pieceNumber;
-        //[SerializeField] private int _solvingNumber;
+        [SerializeField] private int _solvingNumber;
         [SerializeField] bool _isDraggable;
         private GifHandler _gifHandler;
         List<Sprite> gifList;
@@ -75,7 +75,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
             //Debug.Log("This piece is " + name + " and the path is " + mGif);
             Image fileImage = Image.FromFile(mGif);
             gifList = _gifHandler.GifToSpriteList(fileImage);
-            Debug.Log("I am " + name + " and the list I've got has " + gifList.Count);
+            //Debug.Log("I am " + name + " and the list I've got has " + gifList.Count);
 
             //This part is just for testing purpose
             if(_pieceNumber == 0 || _pieceNumber == 1)
@@ -89,6 +89,8 @@ namespace PuzzleSystem.PuzzlePiece.V1
             showingPiece = 0;
             playCount = 0;
             playingGif = false;
+
+            DetectSpot();
         }
 
         // Update is called once per frame
@@ -222,5 +224,29 @@ namespace PuzzleSystem.PuzzlePiece.V1
         }
 
 
+        public IEnumerator playGifRoutine()
+        {
+            for(int i = 0; i < gifLength; i++)
+            {
+                yield return new WaitForSeconds(playSpeed);
+                showingPiece = i;
+                _spriteRenderer.sprite = gifList[showingPiece];
+            }
+            _puzzleManager.GifPlayedHandler(_pieceNumber);
+        }
+
+        public void DetectSpot()
+        {
+            ContactFilter2D contactFilt = new ContactFilter2D();
+            Collider2D[] overlappedCollider = new Collider2D[1];
+            _boxCollider2D.OverlapCollider(contactFilt, overlappedCollider);
+            //Debug.Log("This is " + name + " I am overlapping with " + overlappedCollider[0].name);
+            PuzzleSpotBehavior targetSpot = overlappedCollider[0].GetComponent<PuzzleSpotBehavior>();
+            if(targetSpot != null)
+            {
+                _solvingNumber = targetSpot.SpotNum;
+            }
+            transform.position = overlappedCollider[0].transform.position;
+        }
     }
 }
