@@ -441,7 +441,9 @@ namespace PuzzleSystem.PuzzleManagers.V1
         public void PutPiecesInOrder()
         {
             Vector2 calculatedResult;
-            for(int i = 0; i < startedPosition.Length; i++)
+            _pieceWidth = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.x;
+            _pieceHeight = _puzzlePieces[0].GetComponent<SpriteRenderer>().bounds.size.y;
+            for (int i = 0; i < startedPosition.Length; i++)
             {
                 calculatedResult = CalculatePuzzlePos(startedPosition[i]);
                 _puzzlePieces[i].transform.position = calculatedResult;
@@ -452,8 +454,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
         {
             Vector2 botLeftPoint = GetBotLeftPoint();
             Debug.Log("botLeftPoint: " + botLeftPoint);
-            int i = pieceNumber % 4;
-            int j = pieceNumber / 4;
+            int i = pieceNumber % 3;
+            int j = pieceNumber / 3;
             //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
             Vector2 newPosition = new Vector2(botLeftPoint.x + j * (_pieceWidth + _pieceGap), botLeftPoint.y + i * (_pieceHeight + _pieceGap));
 
