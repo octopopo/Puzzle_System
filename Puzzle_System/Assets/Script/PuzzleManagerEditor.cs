@@ -9,10 +9,11 @@ public class PuzzleManagerEditor : Editor {
 
 	public override void OnInspectorGUI()
     {
+        DrawDefaultInspector();
         PuzzleManager mPM = (PuzzleManager)target;
         if(GUILayout.Button("Put pieces in order"))
         {
-
+            mPM.PutPiecesInOrder();
         }
     }
 }

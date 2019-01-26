@@ -29,14 +29,15 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private GamePhase _playerProgress;
         [SerializeField] private Vector2[] _numToPosition;
 
-        [SerializeField] private int startedPosition;
-
         public CameraBehavior _mainCamera;
         public VideoBehavior _videoPlayer;
         public Button _skipButton;
         //[SerializeField] private int[] _puzzleSetup;
         private int _totalPiece;
         private bool isPosSet = false;
+
+
+        public int[] startedPosition;
 
         public bool PieceIsDragging
         {
@@ -435,6 +436,28 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 return false;
             }
             return true;
+        }
+
+        public void PutPiecesInOrder()
+        {
+            Vector2 calculatedResult;
+            for(int i = 0; i < startedPosition.Length; i++)
+            {
+                calculatedResult = CalculatePuzzlePos(startedPosition[i]);
+                _puzzlePieces[i].transform.position = calculatedResult;
+            }
+        }
+
+        private Vector2 CalculatePuzzlePos(int pieceNumber)
+        {
+            Vector2 botLeftPoint = GetBotLeftPoint();
+            Debug.Log("botLeftPoint: " + botLeftPoint);
+            int i = pieceNumber % 4;
+            int j = pieceNumber / 4;
+            //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
+            Vector2 newPosition = new Vector2(botLeftPoint.x + j * (_pieceWidth + _pieceGap), botLeftPoint.y + i * (_pieceHeight + _pieceGap));
+
+            return newPosition;
         }
     }
 }
