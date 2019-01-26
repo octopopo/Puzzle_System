@@ -29,6 +29,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private GamePhase _playerProgress;
         [SerializeField] private Vector2[] _numToPosition;
 
+        [SerializeField] private int startedPosition;
+
         public CameraBehavior _mainCamera;
         public VideoBehavior _videoPlayer;
         public Button _skipButton;
