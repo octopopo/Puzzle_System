@@ -28,6 +28,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private float _pieceGap;
         [SerializeField] private GamePhase _playerProgress;
         [SerializeField] private Vector2[] _numToPosition;
+        [SerializeField] private Text _winText;
 
         public CameraBehavior _mainCamera;
         public VideoBehavior _videoPlayer;
@@ -110,6 +111,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
             GameProgessTracktor();
 
             _skipButton.onClick.AddListener(GameProgessTracktor);
+
+            _winText.gameObject.SetActive(false);
 
             //Test, play video at the begninning
             //We might not be using this
@@ -396,6 +399,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     break;
                 case 9:
                     Debug.Log("You win!!");
+                    _winText.gameObject.SetActive(true);
                     break;
                 case 10:
                     StartCoroutine(_puzzlePieces[9].playGifRoutine(0));
