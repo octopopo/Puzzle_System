@@ -29,7 +29,8 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] bool _isDraggable;
         [SerializeField] bool _isSwappable;
         private GifHandler _gifHandler;
-        List<Sprite> gifList;
+        List<List<Sprite>> gifList;
+        [SerializeField] int gifCount;
         int gifLength;
         int showingPiece;
         public float playSpeed = 0.1f;
@@ -88,21 +89,28 @@ namespace PuzzleSystem.PuzzlePiece.V1
             _gifHandler = new GifHandler();
 
             //0103, read the image with System.Drawing
-            string mGif = _gifPath + _pieceNumber + ".gif";
-            //Debug.Log("This piece is " + name + " and the path is " + mGif);
-            Image fileImage = Image.FromFile(mGif);
-            gifList = _gifHandler.GifToSpriteList(fileImage);
-            //Debug.Log("I am " + name + " and the list I've got has " + gifList.Count);
+            if (gifCount > 0)
+            {
+                string mGif = _gifPath + _pieceNumber + ".gif";
+                Image fileImage = Image.FromFile(mGif);
+                gifList = new List<List<Sprite>>();
+                gifList.Add(_gifHandler.GifToSpriteList(fileImage));
+                if(gifCount > 1)
+                {
+                    mGif = _gifPath + _pieceNumber + "-2.gif";
+                    fileImage = Image.FromFile(mGif);
+                    gifList.Add(_gifHandler.GifToSpriteList(fileImage));
+                }
+            }
 
             //This part is just for testing purpose
-            if(_pieceNumber == 0 || _pieceNumber == 1)
+            /*if(_pieceNumber == 0 || _pieceNumber == 1)
             {
                 _spriteRenderer.sprite = gifList[0];
-            }
+            }*/
             //End part
 
             //This part is for initailize the animation of the gif
-            gifLength = gifList.Count;
             showingPiece = 0;
             playCount = 0;
             playingGif = false;
@@ -220,15 +228,23 @@ namespace PuzzleSystem.PuzzlePiece.V1
             _isSwappable = swappable;
         }
 
-        public IEnumerator playGifRoutine()
+        public IEnumerator playGifRoutine(int gifNum = 0)
         {
-            for(int i = 0; i < gifLength; i++)
+            if (gifNum >= gifCount)
             {
-                yield return new WaitForSeconds(playSpeed);
-                showingPiece = i;
-                _spriteRenderer.sprite = gifList[showingPiece];
+                Debug.LogError("You called the wrong gif");
             }
-            _puzzleManager.GifPlayedHandler(_pieceNumber);
+            else
+            {
+                gifLength = gifList[gifNum].Count;
+                for (int i = 0; i < gifLength; i++)
+                {
+                    yield return new WaitForSeconds(playSpeed);
+                    showingPiece = i;
+                    _spriteRenderer.sprite = gifList[gifNum][showingPiece];
+                }
+                _puzzleManager.GifPlayedHandler(_pieceNumber, gifNum);
+            }
         }
 
         public void DetectSpot()
