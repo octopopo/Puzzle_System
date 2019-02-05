@@ -28,6 +28,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] private int _solvingNumber;
         [SerializeField] bool _isDraggable;
         [SerializeField] bool _isSwappable;
+        [SerializeField] bool _isFlipped;
         private GifHandler _gifHandler;
         List<List<Sprite>> gifList;
         [SerializeField] int gifCount;
@@ -68,24 +69,16 @@ namespace PuzzleSystem.PuzzlePiece.V1
             }
         }
 
-        /*public int SolvingNumber
+        public bool IsFlipped
         {
-            set
-            {
-                _solvingNumber = value;
-            }
-            get
-            {
-                return _solvingNumber;
-            }
-        }*/
-
+            get { return _isFlipped; }
+        }
         // Use this for initialization
         void Start()
         {
             _pieceStatus = PieceStatus.Unclicked;
             _isDraggable = false;
-
+            _isFlipped = false;
             _gifHandler = new GifHandler();
 
             //0103, read the image with System.Drawing
@@ -102,13 +95,6 @@ namespace PuzzleSystem.PuzzlePiece.V1
                     gifList.Add(_gifHandler.GifToSpriteList(fileImage));
                 }
             }
-
-            //This part is just for testing purpose
-            /*if(_pieceNumber == 0 || _pieceNumber == 1)
-            {
-                _spriteRenderer.sprite = gifList[0];
-            }*/
-            //End part
 
             //This part is for initailize the animation of the gif
             showingPiece = 0;
@@ -156,7 +142,6 @@ namespace PuzzleSystem.PuzzlePiece.V1
             {
                 if (_pieceStatus == PieceStatus.FirstClicked && ((_clickedTime + _doubleClickDelta) >= Time.time))
                 {
-                    //Debug.Log("Double Clicked");
                     DoubleClickedHandler();
                     _pieceStatus = PieceStatus.Unclicked;
                     _clickedTime = 0.0f;
@@ -202,6 +187,22 @@ namespace PuzzleSystem.PuzzlePiece.V1
         private void DoubleClickedHandler()
         {
             transform.Rotate(new Vector3(0, 0, 180));
+            _isFlipped = !_isFlipped;
+            _puzzleManager.CheckAnswer();
+        }
+
+        public void SetIsFlipped(bool flipped)
+        {
+            if(flipped)
+            {
+                transform.rotation = Quaternion.Euler(0,0,180);
+                _isFlipped = flipped;
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                _isFlipped = flipped;
+            }
         }
 
         private void MouseHoldHandler()

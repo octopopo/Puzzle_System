@@ -133,11 +133,9 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 for (int j = 0; j < rowCount; j++)
                 {
                     int target = i * rowCount + j;
-                    //Vector2 newPosition = new Vector2(botLeftPoint.x + j * _pieceWidth, botLeftPoint.y + i * _pieceHeight);
                     Vector2 newPosition = new Vector2(botLeftPoint.x + i * (_pieceWidth + _pieceGap), botLeftPoint.y + j * (_pieceHeight + _pieceGap));
                     newPosition.x = Mathf.Round(newPosition.x * 1000) / 1000;
                     newPosition.y = Mathf.Round(newPosition.y * 1000) / 1000;
-                    //Debug.Log(target);
                     _answer[target] = newPosition;
                 }
             }
@@ -146,7 +144,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         private void OrderPuzzle()
         {
             Vector2 botLeftPoint = GetBotLeftPoint();
-            Debug.Log("botLeftPoint: " + botLeftPoint);
+            //Debug.Log("botLeftPoint: " + botLeftPoint);
             for(int i = 0; i < rowCount; i++)
             {
                 for(int j = 0; j < colCount; j++)
@@ -166,27 +164,20 @@ namespace PuzzleSystem.PuzzleManagers.V1
             int totalPuzzle = _puzzlePieces.Length;
             if (colCount % 2 == 0)
             {
-                //is minus because is left;
-                //The solution below is without the gap
-                //leftPoint = -_pieceWidth * ((colCount / 2) - 1 + 0.5f);
-
                 //The solution with the gap
                 leftPoint = -(_pieceWidth + _pieceGap) * ((colCount / 2) - 1 + 0.5f);
             }
             else
             {
-                //leftPoint = -_pieceWidth * ((colCount / 2));
                 leftPoint = -(_pieceWidth + _pieceGap) * ((colCount / 2));
             }
 
             if (rowCount % 2 == 0)
             {
-                //botPoint = -_pieceHeight * ((rowCount / 2) - 1 + 0.5f);
                 botPoint = -(_pieceHeight + _pieceGap) * ((rowCount / 2) - 1 + 0.5f);
             }
             else
             {
-                //botPoint = -_pieceHeight * ((rowCount / 2));
                 botPoint = -(_pieceHeight + _pieceGap) * ((rowCount / 2));
             }
 
@@ -234,36 +225,32 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         }
 
-        private void CheckAnswer()
+        public void CheckAnswer()
         {
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
-                    //if(_answer[0] == _numToPosition[0] && _answer[1] == _numToPosition[1])
-                    if(_puzzlePieces[0].IsAnswerCorrect() && _puzzlePieces[1].IsAnswerCorrect())
+                    if(_puzzlePieces[0].IsAnswerCorrect() && _puzzlePieces[1].IsAnswerCorrect() 
+                        && !_puzzlePieces[0].IsFlipped && !_puzzlePieces[1].IsFlipped)
                     {
                         _playerProgress = GamePhase.SecondStep;
                         _puzzlePieces[1].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[0].playGifRoutine(0));
-                        //_videoPlayer.DisplayAndPlay();
-                        //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.SecondStep:
-                    //if (_answer[2] == _numToPosition[2] && _answer[5] == _numToPosition[5])
-                    if(_puzzlePieces[2].IsAnswerCorrect() && _puzzlePieces[5].IsAnswerCorrect())
+                    if(_puzzlePieces[2].IsAnswerCorrect() && _puzzlePieces[5].IsAnswerCorrect()
+                        && !_puzzlePieces[2].IsFlipped && !_puzzlePieces[5].IsFlipped)
                     {
                         _playerProgress = GamePhase.ThirdStep;
                         _puzzlePieces[2].SetIsDraggable(false);
                         _puzzlePieces[5].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[2].playGifRoutine(0));
-                        //_videoPlayer.DisplayAndPlay();
-                        //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.ThirdStep:
-                    //if (_answer[3] == _numToPosition[3] && _answer[4] == _numToPosition[4] && _answer[6] == _numToPosition[6] && _answer[7] == _numToPosition[7])
-                    if(_puzzlePieces[3].IsAnswerCorrect() && _puzzlePieces[4].IsAnswerCorrect() && _puzzlePieces[6].IsAnswerCorrect() && _puzzlePieces[7].IsAnswerCorrect())
+                    if(_puzzlePieces[3].IsAnswerCorrect() && _puzzlePieces[4].IsAnswerCorrect() && _puzzlePieces[6].IsAnswerCorrect() && _puzzlePieces[7].IsAnswerCorrect()
+                        && !_puzzlePieces[3].IsFlipped && !_puzzlePieces[4].IsFlipped && !_puzzlePieces[6].IsFlipped && !_puzzlePieces[7].IsFlipped)
                     {
                         _playerProgress = GamePhase.FourthStep;
                         _puzzlePieces[3].SetIsDraggable(false);
@@ -271,13 +258,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
                         _puzzlePieces[6].SetIsDraggable(false);
                         _puzzlePieces[7].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[4].playGifRoutine(0));
-                        //_videoPlayer.DisplayAndPlay();
-                        //GameProgessTracktor();
                     }
                     break;
                 case GamePhase.FourthStep:
-                    //if (_answer[8] == _numToPosition[8] && _answer[9] == _numToPosition[9] && _answer[10] == _numToPosition[10] && _answer[11] == _numToPosition[11])
-                    if (_puzzlePieces[8].IsAnswerCorrect() && _puzzlePieces[9].IsAnswerCorrect() && _puzzlePieces[10].IsAnswerCorrect() && _puzzlePieces[11].IsAnswerCorrect())
+                    if (_puzzlePieces[8].IsAnswerCorrect() && _puzzlePieces[9].IsAnswerCorrect() && _puzzlePieces[10].IsAnswerCorrect() && _puzzlePieces[11].IsAnswerCorrect()
+                        && !_puzzlePieces[8].IsFlipped && !_puzzlePieces[9].IsFlipped && !_puzzlePieces[10].IsFlipped && !_puzzlePieces[11].IsFlipped)
                     {
                         _puzzlePieces[8].SetIsDraggable(false);
                         _puzzlePieces[9].SetIsDraggable(false);
@@ -312,6 +297,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     //The starting point should not be draggable
                     _puzzlePieces[0].SetIsSwappable(false);
                     _puzzlePieces[1].SetIsDraggable(true);
+                    _puzzlePieces[1].SetIsFlipped(true);
                     //_mainCamera.ChangeCameraPhase(0);
                     break;
                 case GamePhase.SecondStep:
