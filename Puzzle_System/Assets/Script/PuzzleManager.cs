@@ -252,26 +252,29 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     }
                     break;
                 case GamePhase.ThirdStep:
-                    if(_puzzlePieces[3].IsAnswerCorrect() && _puzzlePieces[4].IsAnswerCorrect() && _puzzlePieces[6].IsAnswerCorrect() && _puzzlePieces[7].IsAnswerCorrect()
-                        && !_puzzlePieces[3].IsFlipped && !_puzzlePieces[4].IsFlipped && !_puzzlePieces[6].IsFlipped && !_puzzlePieces[7].IsFlipped)
+                    if(_puzzlePieces[3].IsAnswerCorrect() && _puzzlePieces[4].IsAnswerCorrect() && _puzzlePieces[8].IsAnswerCorrect()
+                        && !_puzzlePieces[3].IsFlipped && !_puzzlePieces[4].IsFlipped && !_puzzlePieces[8].IsFlipped)
                     {
                         _playerProgress = GamePhase.FourthStep;
                         _puzzlePieces[3].SetIsDraggable(false);
                         _puzzlePieces[4].SetIsDraggable(false);
-                        _puzzlePieces[6].SetIsDraggable(false);
-                        _puzzlePieces[7].SetIsDraggable(false);
+                        //_puzzlePieces[6].SetIsDraggable(false);
+                        _puzzlePieces[8].SetIsDraggable(false);
                         StartCoroutine(_puzzlePieces[4].playGifRoutine(0));
                     }
                     break;
                 case GamePhase.FourthStep:
-                    if (_puzzlePieces[8].IsAnswerCorrect() && _puzzlePieces[9].IsAnswerCorrect() && _puzzlePieces[10].IsAnswerCorrect() && _puzzlePieces[11].IsAnswerCorrect()
-                        && !_puzzlePieces[8].IsFlipped && !_puzzlePieces[9].IsFlipped && !_puzzlePieces[10].IsFlipped && !_puzzlePieces[11].IsFlipped)
+                    if (_puzzlePieces[7].IsAnswerCorrect() && _puzzlePieces[9].IsAnswerCorrect() && _puzzlePieces[10].IsAnswerCorrect() && _puzzlePieces[11].IsAnswerCorrect() &&_puzzlePieces[6].IsAnswerCorrect()
+                        && !_puzzlePieces[7].IsFlipped && !_puzzlePieces[9].IsFlipped && !_puzzlePieces[10].IsFlipped && !_puzzlePieces[11].IsFlipped && !_puzzlePieces[6].IsFlipped)
                     {
-                        _puzzlePieces[8].SetIsDraggable(false);
+                        _puzzlePieces[6].SetIsDraggable(false);
+                        _puzzlePieces[7].SetIsDraggable(false);
                         _puzzlePieces[9].SetIsDraggable(false);
                         _puzzlePieces[10].SetIsDraggable(false);
                         _puzzlePieces[11].SetIsDraggable(false);
-                        StartCoroutine(_puzzlePieces[7].playGifRoutine(1));
+
+                        Debug.Log("The fourth answer is correct");
+                        StartCoroutine(_puzzlePieces[7].playGifRoutine(0));
                         //Debug.Log("You win");
                     }
                     break;
@@ -314,12 +317,12 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 case GamePhase.ThirdStep:
                     _puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[4].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[7].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[3].SetIsDraggable(true);
                     _puzzlePieces[4].SetIsDraggable(true);
-                    _puzzlePieces[6].SetIsDraggable(true);
-                    _puzzlePieces[7].SetIsDraggable(true);
+                    //_puzzlePieces[6].SetIsDraggable(true);
+                    _puzzlePieces[8].SetIsDraggable(true);
 
                     _puzzlePieces[2].SetIsSwappable(false);
                     _puzzlePieces[5].SetIsSwappable(false);
@@ -327,19 +330,21 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     //_mainCamera.ChangeCameraPhase(2);
                     break;
                 case GamePhase.FourthStep:
-                    _puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[7].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[9].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[10].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[11].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+                    _puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[6].SetIsDraggable(true);
                     //The destination should not be draggable
-                    _puzzlePieces[8].SetIsDraggable(true);
+                    _puzzlePieces[7].SetIsDraggable(true);
                     _puzzlePieces[10].SetIsDraggable(true);
                     _puzzlePieces[11].SetIsDraggable(true);
 
                     _puzzlePieces[3].SetIsSwappable(false);
                     _puzzlePieces[4].SetIsSwappable(false);
-                    _puzzlePieces[6].SetIsSwappable(false);
-                    _puzzlePieces[7].SetIsSwappable(false);
+                    _puzzlePieces[8].SetIsSwappable(false);
                     //_mainCamera.ChangeCameraPhase(3);
                     break;
                 default:
@@ -380,7 +385,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     }
                     else if(gifNum == 1)
                     {
-                        StartCoroutine(_puzzlePieces[7].playGifRoutine(0));
+                        _videoPlayer.DisplayAndPlay();
+                        //StartCoroutine(_puzzlePieces[7].playGifRoutine(0));
                     }
                     break;
                 case 6:
@@ -388,7 +394,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 case 7:
                     if (gifNum == 0)
                     {
-                        _videoPlayer.DisplayAndPlay();
+                        StartCoroutine(_puzzlePieces[7].playGifRoutine(1));
                     }
                     else if(gifNum == 1)
                     {
