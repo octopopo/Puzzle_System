@@ -554,7 +554,7 @@ Prefab:
     - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
         type: 2}
@@ -565,6 +565,46 @@ Prefab:
         type: 2}
       propertyPath: orthographic size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraSize.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraSize.Array.data[0]
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraPosition.Array.data[0].x
+      value: -5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraPosition.Array.data[0].y
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraSize.Array.data[1]
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraSize.Array.data[2]
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraPosition.Array.data[1].x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
+        type: 2}
+      propertyPath: _cameraPosition.Array.data[2].x
+      value: -2.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2664ddcf75179d442a008b6477c30edc, type: 2}
@@ -1107,11 +1147,6 @@ Prefab:
       propertyPath: _moveText
       value: 
       objectReference: {fileID: 1986165627}
-    - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
-        type: 2}
-      propertyPath: _mainCamera
-      value: 
-      objectReference: {fileID: 1943553612}
     - target: {fileID: 114375796523293520, guid: 9e5e17a978af6ab47900e8ec3169a208,
         type: 2}
       propertyPath: _videoPlayer
@@ -2523,12 +2558,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf9693f440d41c049bb90b6cb3aad704, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1943553612 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114298824829075446, guid: 2664ddcf75179d442a008b6477c30edc,
-    type: 2}
-  m_PrefabInternal: {fileID: 143691456}
-  m_Script: {fileID: 11500000, guid: ca127da7ed9caa34a9e9f1d07f8bcfe9, type: 3}
 --- !u!114 &1944627663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114011846757179964, guid: 22879e8899933b2468539ac88ccf17e4,

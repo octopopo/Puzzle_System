@@ -322,7 +322,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[0].SetIsSwappable(false);
                     _puzzlePieces[1].SetIsDraggable(true);
                     _puzzlePieces[1].SetIsFlipped(true);
-                    //_mainCamera.ChangeCameraPhase(0);
+                    _mainCamera.ChangeCameraPhase(0);
                     break;
                 case GamePhase.SecondStep:
                     //_puzzlePieces[2].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -339,7 +339,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[2].SetIsDraggable(true);
                     _puzzlePieces[5].SetIsDraggable(true);
                     _puzzlePieces[1].SetIsSwappable(false);
-                    //_mainCamera.ChangeCameraPhase(1);
+                    _mainCamera.ChangeCameraPhase(1);
                     break;
                 case GamePhase.ThirdStep:
                     //_puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -365,7 +365,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[2].SetIsSwappable(false);
                     _puzzlePieces[5].SetIsSwappable(false);
 
-                    //_mainCamera.ChangeCameraPhase(2);
+                    _mainCamera.ChangeCameraPhase(2);
                     break;
                 case GamePhase.FourthStep:
                     //_puzzlePieces[7].gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -398,7 +398,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[3].SetIsSwappable(false);
                     _puzzlePieces[4].SetIsSwappable(false);
                     _puzzlePieces[8].SetIsSwappable(false);
-                    //_mainCamera.ChangeCameraPhase(3);
+                    _mainCamera.ChangeCameraPhase(3);
                     break;
                 default:
                     break;
