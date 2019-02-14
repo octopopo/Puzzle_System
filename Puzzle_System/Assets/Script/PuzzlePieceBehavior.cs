@@ -53,6 +53,19 @@ namespace PuzzleSystem.PuzzlePiece.V1
             }
         }
 
+        public int SolvingNumber
+        {
+            set
+            {
+                _solvingNumber = value;
+            }
+
+            get
+            {
+                return _solvingNumber;
+            }
+        }
+
         public bool IsDraggable
         {
             get
@@ -77,7 +90,6 @@ namespace PuzzleSystem.PuzzlePiece.V1
         void Start()
         {
             _pieceStatus = PieceStatus.Unclicked;
-            _isDraggable = false;
             _isFlipped = false;
             _gifHandler = new GifHandler();
 
@@ -101,8 +113,8 @@ namespace PuzzleSystem.PuzzlePiece.V1
             playCount = 0;
             playingGif = false;
             _isSwappable = true;
-
-            DetectSpot();
+            _solvingNumber = -1;
+            //DetectSpot();
         }
 
         // Update is called once per frame
@@ -163,13 +175,33 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _spriteRenderer.color = new UnityEngine.Color(_lastColor.r, _lastColor.g, _lastColor.b, 1.0f);
                 _puzzleManager.PieceIsDragging = false;
                 _boxCollider2D.enabled = true;
-                if (!_puzzleManager.CanSwap())
+                /*if (!_puzzleManager.CanSwap())
                 {
                     transform.position = _lastPosition;
                 }
                 else
                 {
                     _puzzleManager.SwapPosition(_lastPosition);
+                }*/
+                if(FindSpot())
+                {
+                    Debug.Log("Move");
+                    _puzzleManager.CheckAnswer();
+                    _puzzleManager.DeductOneMove();
+                }
+                else
+                {
+                    if (_puzzleManager.CanSwap())
+                    {
+                        Debug.Log("Swap");
+                        _puzzleManager.SwapPosition(_lastPosition);
+                        //_puzzleManager.CheckAnswer();
+                        _puzzleManager.DeductOneMove();
+                    }
+                    else
+                    {
+                        transform.position = _lastPosition;
+                    }
                 }
                 _puzzleManager.TouchedTarget = -1;
                 _puzzleManager.DraggedTarget = -1;
@@ -221,6 +253,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
 
         public void SetIsDraggable(bool draggable)
         {
+            Debug.Log(gameObject.name + " has set draggable as: " + draggable);
             _isDraggable = draggable;
         }
 
@@ -260,6 +293,24 @@ namespace PuzzleSystem.PuzzlePiece.V1
                 _solvingNumber = targetSpot.SpotNum;
             }
             transform.position = new Vector3(overlappedCollider[0].transform.position.x, overlappedCollider[0].transform.position.y, 0);
+        }
+
+        public bool FindSpot()
+        {
+            ContactFilter2D contactFilt = new ContactFilter2D();
+            Collider2D[] overlappedCollider = new Collider2D[1];
+            _boxCollider2D.OverlapCollider(contactFilt, overlappedCollider);
+            PuzzleSpotBehavior targetSpot = overlappedCollider[0].GetComponent<PuzzleSpotBehavior>();
+            if(targetSpot == null)
+            {
+                return false;
+            }
+            else
+            {
+                _solvingNumber = targetSpot.SpotNum;
+            }
+            transform.position = new Vector3(overlappedCollider[0].transform.position.x, overlappedCollider[0].transform.position.y, 0);
+            return true;
         }
 
         public bool IsAnswerCorrect()

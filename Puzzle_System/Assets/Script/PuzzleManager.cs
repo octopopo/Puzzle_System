@@ -18,6 +18,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
     public class PuzzleManager : MonoBehaviour
     {
         [SerializeField] private PuzzlePieceBehavior[] _puzzlePieces;
+        [SerializeField] private PuzzleSpotBehavior[] _puzzleSpot;
         [SerializeField] private bool _pieceIsDragging;
         [SerializeField] private float _pieceWidth;
         [SerializeField] private float _pieceHeight;
@@ -218,20 +219,18 @@ namespace PuzzleSystem.PuzzleManagers.V1
         public void SwapPosition(Vector3 firstLastPosition)
         {
             //swap the position of the real object
-            _puzzlePieces[_draggedTarget].transform.position = _numToPosition[_tounchedTarget];
-            _puzzlePieces[_tounchedTarget].transform.position = _numToPosition[_draggedTarget];
+            //Vector3 tempPos;
+            _puzzlePieces[_draggedTarget].transform.position = _puzzlePieces[_tounchedTarget].transform.position;
+            _puzzlePieces[_tounchedTarget].transform.position = firstLastPosition;
 
             //swap the positoin in the dictionary
-            _numToPosition[_draggedTarget] = _puzzlePieces[_draggedTarget].transform.position;
-            _numToPosition[_tounchedTarget] = _puzzlePieces[_tounchedTarget].transform.position;
+            /*_numToPosition[_draggedTarget] = _puzzlePieces[_draggedTarget].transform.position;
+            _numToPosition[_tounchedTarget] = _puzzlePieces[_tounchedTarget].transform.position;*/
 
 
             //Detect the spot and get it's new number
             _puzzlePieces[_draggedTarget].DetectSpot();
             _puzzlePieces[_tounchedTarget].DetectSpot();
-
-            TotalMove--;
-            _moveText.text = "Remaining: " + TotalMove;
 
             CheckAnswer();
 
@@ -239,7 +238,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
 
         public void CheckAnswer()
         {
-            switch(_playerProgress)
+            switch (_playerProgress)
             {
                 case GamePhase.FirstStep:
                     if(_puzzlePieces[0].IsAnswerCorrect() && _puzzlePieces[1].IsAnswerCorrect() 
@@ -289,21 +288,15 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     }
                     break;
             }
-            if(TotalMove <= 0 && _playerProgress != GamePhase.Win)
-            {
-                _playerProgress = GamePhase.Lose;
-                _winText.gameObject.SetActive(true);
-                _winText.text = "Lose";
-            }
         }
 
         private void HideAllPieces()
         {
             for (int i = 0; i < _puzzlePieces.Length; i++)
             {
-                //_puzzlePieces[i].gameObject.SetActive(false);
-                _puzzlePieces[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                _puzzlePieces[i].SetIsDraggable(false);
+                _puzzlePieces[i].gameObject.SetActive(false);
+                //_puzzlePieces[i].gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                //_puzzlePieces[i].SetIsDraggable(false);
             }
         }
 
@@ -314,8 +307,17 @@ namespace PuzzleSystem.PuzzleManagers.V1
             switch(_playerProgress)
             {
                 case GamePhase.FirstStep:
-                    _puzzlePieces[0].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[1].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[0].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[1].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[0].gameObject.SetActive(true);
+                    _puzzlePieces[1].gameObject.SetActive(true);
+
+                    _puzzlePieces[0].transform.position = new Vector3(_puzzleSpot[startedPosition[0]].transform.position.x, _puzzleSpot[startedPosition[0]].transform.position.y, 0); ;
+                    _puzzlePieces[1].transform.position = new Vector3(_puzzleSpot[startedPosition[1]].transform.position.x, _puzzleSpot[startedPosition[1]].transform.position.y, 0); ;
+
+                    _puzzlePieces[0].SolvingNumber = _puzzleSpot[startedPosition[0]].SpotNum;
+                    _puzzlePieces[1].SolvingNumber = _puzzleSpot[startedPosition[1]].SpotNum;
+
                     //The starting point should not be draggable
                     _puzzlePieces[0].SetIsSwappable(false);
                     _puzzlePieces[1].SetIsDraggable(true);
@@ -323,18 +325,38 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     //_mainCamera.ChangeCameraPhase(0);
                     break;
                 case GamePhase.SecondStep:
-                    _puzzlePieces[2].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[5].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[2].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[5].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[2].gameObject.SetActive(true);
+                    _puzzlePieces[5].gameObject.SetActive(true);
+
+                    _puzzlePieces[2].transform.position = new Vector3(_puzzleSpot[startedPosition[2]].transform.position.x, _puzzleSpot[startedPosition[2]].transform.position.y, 0); ;
+                    _puzzlePieces[5].transform.position = new Vector3(_puzzleSpot[startedPosition[5]].transform.position.x, _puzzleSpot[startedPosition[5]].transform.position.y, 0); ;
+
+                    _puzzlePieces[2].SolvingNumber = _puzzleSpot[startedPosition[2]].SpotNum;
+                    _puzzlePieces[5].SolvingNumber = _puzzleSpot[startedPosition[5]].SpotNum;
+
                     _puzzlePieces[2].SetIsDraggable(true);
                     _puzzlePieces[5].SetIsDraggable(true);
                     _puzzlePieces[1].SetIsSwappable(false);
                     //_mainCamera.ChangeCameraPhase(1);
                     break;
                 case GamePhase.ThirdStep:
-                    _puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[4].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    //_puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[3].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[4].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[8].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[3].gameObject.SetActive(true);
+                    _puzzlePieces[4].gameObject.SetActive(true);
+                    _puzzlePieces[8].gameObject.SetActive(true);
+
+                    _puzzlePieces[3].transform.position = new Vector3(_puzzleSpot[startedPosition[3]].transform.position.x, _puzzleSpot[startedPosition[3]].transform.position.y, 0); ;
+                    _puzzlePieces[4].transform.position = new Vector3(_puzzleSpot[startedPosition[4]].transform.position.x, _puzzleSpot[startedPosition[4]].transform.position.y, 0); ;
+                    _puzzlePieces[8].transform.position = new Vector3(_puzzleSpot[startedPosition[8]].transform.position.x, _puzzleSpot[startedPosition[8]].transform.position.y, 0); ;
+
+                    _puzzlePieces[3].SolvingNumber = _puzzleSpot[startedPosition[3]].SpotNum;
+                    _puzzlePieces[4].SolvingNumber = _puzzleSpot[startedPosition[4]].SpotNum;
+                    _puzzlePieces[8].SolvingNumber = _puzzleSpot[startedPosition[8]].SpotNum;
+
                     _puzzlePieces[3].SetIsDraggable(true);
                     _puzzlePieces[4].SetIsDraggable(true);
                     //_puzzlePieces[6].SetIsDraggable(true);
@@ -346,12 +368,27 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     //_mainCamera.ChangeCameraPhase(2);
                     break;
                 case GamePhase.FourthStep:
-                    _puzzlePieces[7].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[9].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[10].gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                    _puzzlePieces[11].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[7].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[9].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[10].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    //_puzzlePieces[11].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[6].gameObject.SetActive(true);
+                    _puzzlePieces[7].gameObject.SetActive(true);
+                    _puzzlePieces[9].gameObject.SetActive(true);
+                    _puzzlePieces[10].gameObject.SetActive(true);
+                    _puzzlePieces[11].gameObject.SetActive(true);
 
-                    _puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    _puzzlePieces[7].transform.position = new Vector3(_puzzleSpot[startedPosition[7]].transform.position.x, _puzzleSpot[startedPosition[7]].transform.position.y, 0); ;
+                    _puzzlePieces[9].transform.position = new Vector3(_puzzleSpot[startedPosition[9]].transform.position.x, _puzzleSpot[startedPosition[9]].transform.position.y, 0); ;
+                    _puzzlePieces[10].transform.position = new Vector3(_puzzleSpot[startedPosition[10]].transform.position.x, _puzzleSpot[startedPosition[10]].transform.position.y, 0); ;
+                    _puzzlePieces[11].transform.position = new Vector3(_puzzleSpot[startedPosition[11]].transform.position.x, _puzzleSpot[startedPosition[11]].transform.position.y, 0); ;
+
+                    _puzzlePieces[7].SolvingNumber = _puzzleSpot[startedPosition[7]].SpotNum;
+                    _puzzlePieces[9].SolvingNumber = _puzzleSpot[startedPosition[9]].SpotNum;
+                    _puzzlePieces[10].SolvingNumber = _puzzleSpot[startedPosition[10]].SpotNum;
+                    _puzzlePieces[11].SolvingNumber = _puzzleSpot[startedPosition[11]].SpotNum;
+
+                    //_puzzlePieces[6].gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     _puzzlePieces[6].SetIsDraggable(true);
                     //The destination should not be draggable
                     _puzzlePieces[7].SetIsDraggable(true);
@@ -421,6 +458,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     break;
                 case 9:
                     Debug.Log("You win!!");
+                    _winText.text = "Win";
                     _winText.gameObject.SetActive(true);
                     break;
                 case 10:
@@ -465,6 +503,18 @@ namespace PuzzleSystem.PuzzleManagers.V1
             Vector2 newPosition = new Vector2(botLeftPoint.x + j * (_pieceWidth + _pieceGap), botLeftPoint.y + i * (_pieceHeight + _pieceGap));
 
             return newPosition;
+        }
+
+        public void DeductOneMove()
+        {
+            TotalMove--;
+            _moveText.text = "Remaining: " + TotalMove;
+            if (TotalMove <= 0 && _playerProgress != GamePhase.Win)
+            {
+                _playerProgress = GamePhase.Lose;
+                _winText.gameObject.SetActive(true);
+                _winText.text = "Lose";
+            }
         }
     }
 }

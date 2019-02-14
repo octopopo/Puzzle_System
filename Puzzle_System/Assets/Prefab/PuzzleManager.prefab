@@ -64,9 +64,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _puzzleSpot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _pieceIsDragging: 0
-  _pieceWidth: 0
-  _pieceHeight: 0
+  _pieceWidth: 4.73
+  _pieceHeight: 2.99
   rowCount: 3
   colCount: 4
   _tounchedTarget: 0
@@ -87,6 +100,10 @@ MonoBehaviour:
   _pieceGap: 0.5
   _playerProgress: 0
   _numToPosition: []
+  _winText: {fileID: 0}
+  _moveText: {fileID: 0}
+  TotalMove: 9
   _mainCamera: {fileID: 0}
   _videoPlayer: {fileID: 0}
   _skipButton: {fileID: 0}
+  startedPosition: 0000000003000000040000000700000003000000030000000b0000000a00000004000000090000000600000007000000
