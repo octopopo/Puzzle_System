@@ -11,7 +11,9 @@ namespace PuzzleSystem.PuzzleManagers.V1
         FirstStep,
         SecondStep,
         ThirdStep,
-        FourthStep
+        FourthStep,
+        Win,
+        Lose,
     }
     public class PuzzleManager : MonoBehaviour
     {
@@ -29,6 +31,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
         [SerializeField] private GamePhase _playerProgress;
         [SerializeField] private Vector2[] _numToPosition;
         [SerializeField] private Text _winText;
+        [SerializeField] private Text _moveText;
+        public int TotalMove = 9;
 
         public CameraBehavior _mainCamera;
         public VideoBehavior _videoPlayer;
@@ -113,6 +117,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _skipButton.onClick.AddListener(GameProgessTracktor);
 
             _winText.gameObject.SetActive(false);
+
+            _moveText.text = "Remaining: " + TotalMove;
 
             //Test, play video at the begninning
             //We might not be using this
@@ -224,6 +230,9 @@ namespace PuzzleSystem.PuzzleManagers.V1
             _puzzlePieces[_draggedTarget].DetectSpot();
             _puzzlePieces[_tounchedTarget].DetectSpot();
 
+            TotalMove--;
+            _moveText.text = "Remaining: " + TotalMove;
+
             CheckAnswer();
 
         }
@@ -274,10 +283,17 @@ namespace PuzzleSystem.PuzzleManagers.V1
                         _puzzlePieces[11].SetIsDraggable(false);
 
                         Debug.Log("The fourth answer is correct");
+                        _playerProgress = GamePhase.Win;
                         StartCoroutine(_puzzlePieces[7].playGifRoutine(0));
                         //Debug.Log("You win");
                     }
                     break;
+            }
+            if(TotalMove <= 0 && _playerProgress != GamePhase.Win)
+            {
+                _playerProgress = GamePhase.Lose;
+                _winText.gameObject.SetActive(true);
+                _winText.text = "Lose";
             }
         }
 
