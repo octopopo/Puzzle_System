@@ -100,8 +100,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _pieceIsDragging: 0
-  _pieceWidth: 4.73
-  _pieceHeight: 2.99
+  _pieceWidth: 9.6
+  _pieceHeight: 5.4
   rowCount: 3
   colCount: 4
   _tounchedTarget: 0
