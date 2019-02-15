@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraBehavior : MonoBehaviour {
 
     [SerializeField] Vector2[] _cameraPosition;

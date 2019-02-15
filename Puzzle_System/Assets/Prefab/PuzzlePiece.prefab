@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294283064547646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.71, y: -1.14, z: 0}
+  m_LocalPosition: {x: -5.05, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,14 +58,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 9.6, y: 5.4}
     newSize: {x: 2.5, y: 2.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 4.74, y: 2.98}
   m_EdgeRadius: 0
 --- !u!114 &114648007002080894
 MonoBehaviour:
@@ -84,8 +84,28 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 212940164053808810}
   _puzzleManager: {fileID: 0}
   _boxCollider2D: {fileID: 61489860594732968}
-  _pieceNumber: 0
-  _isDraggable: 0
+  _pieceNumber: 4
+  _solvingNumber: 0
+  _isDraggable: 1
+  _isSwappable: 0
+  _isFlipped: 0
+  _allSprite:
+  - spritesList:
+    - {fileID: 21300000, guid: fb28d1d05b05aa94ebc74020f2c1a1fb, type: 3}
+    - {fileID: 21300000, guid: 0a819ea2751a4ff40ad842c86f95d3c0, type: 3}
+    - {fileID: 21300000, guid: bda444fc5240dbb4d8a9ebb0a743f462, type: 3}
+    - {fileID: 21300000, guid: 4a579255ca6fc8546802a0fb282b69ce, type: 3}
+    - {fileID: 21300000, guid: 71588ca87f25fd846bce6cf1554b63e0, type: 3}
+    - {fileID: 21300000, guid: 274dae96c1dee8743b4b31ed9099ef97, type: 3}
+    - {fileID: 21300000, guid: 4f9b40695ca3c6b45a059ee9f0d7027e, type: 3}
+    - {fileID: 21300000, guid: 4db0b43b2cf912340b65ee89d6e968af, type: 3}
+    - {fileID: 21300000, guid: 57e69776eb06fdc45b0b81d1c945ebf0, type: 3}
+    - {fileID: 21300000, guid: 1f7deb70e71b29f4faeed50002833761, type: 3}
+    - {fileID: 21300000, guid: e5241756069a6fd47ac21f37741ec6ac, type: 3}
+  - spritesList: []
+  gifCount: 2
+  playSpeed: 0.01
+  playingGif: 0
 --- !u!212 &212940164053808810
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -121,7 +141,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f727f03b2b594c84b951d529950d361c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb28d1d05b05aa94ebc74020f2c1a1fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

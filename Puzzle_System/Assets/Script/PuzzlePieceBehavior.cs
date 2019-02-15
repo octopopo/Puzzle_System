@@ -6,6 +6,11 @@ using System.Drawing;
 
 namespace PuzzleSystem.PuzzlePiece.V1
 {
+    [System.Serializable]
+    public struct SpriteListClass
+    {
+        public Sprite[] spritesList;
+    }
     public enum PieceStatus
     {
         Unclicked,
@@ -31,6 +36,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
         [SerializeField] bool _isFlipped;
         private GifHandler _gifHandler;
         List<List<Sprite>> gifList;
+        [SerializeField] public SpriteListClass[] _allSprite;
         [SerializeField] int gifCount;
         int gifLength;
         int showingPiece;
@@ -91,10 +97,10 @@ namespace PuzzleSystem.PuzzlePiece.V1
         {
             _pieceStatus = PieceStatus.Unclicked;
             _isFlipped = false;
-            _gifHandler = new GifHandler();
+            //_gifHandler = new GifHandler();
 
             //0103, read the image with System.Drawing
-            if (gifCount > 0)
+            /*if (gifCount > 0)
             {
                 string mGif = _gifPath + _pieceNumber + ".gif";
                 Image fileImage = Image.FromFile(mGif);
@@ -106,7 +112,7 @@ namespace PuzzleSystem.PuzzlePiece.V1
                     fileImage = Image.FromFile(mGif);
                     gifList.Add(_gifHandler.GifToSpriteList(fileImage));
                 }
-            }
+            }*/
 
             //This part is for initailize the animation of the gif
             showingPiece = 0;
@@ -270,12 +276,14 @@ namespace PuzzleSystem.PuzzlePiece.V1
             }
             else
             {
-                gifLength = gifList[gifNum].Count;
+                //gifLength = gifList[gifNum].Count;
+                gifLength = _allSprite[gifNum].spritesList.Length;
                 for (int i = 0; i < gifLength; i++)
                 {
                     yield return new WaitForSeconds(playSpeed);
                     showingPiece = i;
-                    _spriteRenderer.sprite = gifList[gifNum][showingPiece];
+                    //_spriteRenderer.sprite = gifList[gifNum][showingPiece];
+                    _spriteRenderer.sprite = _allSprite[gifNum].spritesList[showingPiece];
                 }
                 _puzzleManager.GifPlayedHandler(_pieceNumber, gifNum);
             }

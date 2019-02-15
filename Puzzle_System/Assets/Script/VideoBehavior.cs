@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine;
+using PuzzleSystem.PuzzleManagers.V1;
 
 public class VideoBehavior : MonoBehaviour {
     public RawImage _rawImage;
@@ -10,6 +11,8 @@ public class VideoBehavior : MonoBehaviour {
     public VideoClip[] _videoClips;
     public Button _skipButton;
     public SpriteRenderer[] _piecesSprite;
+    public PuzzleManager puzzleManager;
+    public bool noVideo = true;
 
 
     // Use this for initialization
@@ -34,6 +37,11 @@ public class VideoBehavior : MonoBehaviour {
 
     public void DisplayAndPlay()
     {
+        if(noVideo)
+        {
+            puzzleManager.GameProgessTracktor();
+            return;
+        }
         _rawImage.gameObject.SetActive(true);
         StartCoroutine(PlayVideo());
     }

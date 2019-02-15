@@ -300,7 +300,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
             }
         }
 
-        private void GameProgessTracktor()
+        public void GameProgessTracktor()
         {
             //The Camera Behavior was temporary commented out
             //each steps should disable the movement of pieces from last move
@@ -312,8 +312,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[0].gameObject.SetActive(true);
                     _puzzlePieces[1].gameObject.SetActive(true);
 
-                    _puzzlePieces[0].transform.position = new Vector3(_puzzleSpot[startedPosition[0]].transform.position.x, _puzzleSpot[startedPosition[0]].transform.position.y, 0); ;
-                    _puzzlePieces[1].transform.position = new Vector3(_puzzleSpot[startedPosition[1]].transform.position.x, _puzzleSpot[startedPosition[1]].transform.position.y, 0); ;
+                    _puzzlePieces[0].transform.position = new Vector3(_puzzleSpot[startedPosition[0]].transform.position.x, _puzzleSpot[startedPosition[0]].transform.position.y, 0);
+                    _puzzlePieces[1].transform.position = new Vector3(_puzzleSpot[startedPosition[1]].transform.position.x, _puzzleSpot[startedPosition[1]].transform.position.y, 0);
 
                     _puzzlePieces[0].SolvingNumber = _puzzleSpot[startedPosition[0]].SpotNum;
                     _puzzlePieces[1].SolvingNumber = _puzzleSpot[startedPosition[1]].SpotNum;
@@ -330,8 +330,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[2].gameObject.SetActive(true);
                     _puzzlePieces[5].gameObject.SetActive(true);
 
-                    _puzzlePieces[2].transform.position = new Vector3(_puzzleSpot[startedPosition[2]].transform.position.x, _puzzleSpot[startedPosition[2]].transform.position.y, 0); ;
-                    _puzzlePieces[5].transform.position = new Vector3(_puzzleSpot[startedPosition[5]].transform.position.x, _puzzleSpot[startedPosition[5]].transform.position.y, 0); ;
+                    _puzzlePieces[2].transform.position = new Vector3(_puzzleSpot[startedPosition[2]].transform.position.x, _puzzleSpot[startedPosition[2]].transform.position.y, 0);
+                    _puzzlePieces[5].transform.position = new Vector3(_puzzleSpot[startedPosition[5]].transform.position.x, _puzzleSpot[startedPosition[5]].transform.position.y, 0);
 
                     _puzzlePieces[2].SolvingNumber = _puzzleSpot[startedPosition[2]].SpotNum;
                     _puzzlePieces[5].SolvingNumber = _puzzleSpot[startedPosition[5]].SpotNum;
@@ -349,9 +349,9 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[4].gameObject.SetActive(true);
                     _puzzlePieces[8].gameObject.SetActive(true);
 
-                    _puzzlePieces[3].transform.position = new Vector3(_puzzleSpot[startedPosition[3]].transform.position.x, _puzzleSpot[startedPosition[3]].transform.position.y, 0); ;
-                    _puzzlePieces[4].transform.position = new Vector3(_puzzleSpot[startedPosition[4]].transform.position.x, _puzzleSpot[startedPosition[4]].transform.position.y, 0); ;
-                    _puzzlePieces[8].transform.position = new Vector3(_puzzleSpot[startedPosition[8]].transform.position.x, _puzzleSpot[startedPosition[8]].transform.position.y, 0); ;
+                    _puzzlePieces[3].transform.position = new Vector3(_puzzleSpot[startedPosition[3]].transform.position.x, _puzzleSpot[startedPosition[3]].transform.position.y, 0);
+                    _puzzlePieces[4].transform.position = new Vector3(_puzzleSpot[startedPosition[4]].transform.position.x, _puzzleSpot[startedPosition[4]].transform.position.y, 0);
+                    _puzzlePieces[8].transform.position = new Vector3(_puzzleSpot[startedPosition[8]].transform.position.x, _puzzleSpot[startedPosition[8]].transform.position.y, 0);
 
                     _puzzlePieces[3].SolvingNumber = _puzzleSpot[startedPosition[3]].SpotNum;
                     _puzzlePieces[4].SolvingNumber = _puzzleSpot[startedPosition[4]].SpotNum;
@@ -377,11 +377,11 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     _puzzlePieces[9].gameObject.SetActive(true);
                     _puzzlePieces[10].gameObject.SetActive(true);
                     _puzzlePieces[11].gameObject.SetActive(true);
-
-                    _puzzlePieces[7].transform.position = new Vector3(_puzzleSpot[startedPosition[7]].transform.position.x, _puzzleSpot[startedPosition[7]].transform.position.y, 0); ;
-                    _puzzlePieces[9].transform.position = new Vector3(_puzzleSpot[startedPosition[9]].transform.position.x, _puzzleSpot[startedPosition[9]].transform.position.y, 0); ;
-                    _puzzlePieces[10].transform.position = new Vector3(_puzzleSpot[startedPosition[10]].transform.position.x, _puzzleSpot[startedPosition[10]].transform.position.y, 0); ;
-                    _puzzlePieces[11].transform.position = new Vector3(_puzzleSpot[startedPosition[11]].transform.position.x, _puzzleSpot[startedPosition[11]].transform.position.y, 0); ;
+                    _puzzlePieces[6].transform.position = new Vector3(_puzzleSpot[startedPosition[6]].transform.position.x, _puzzleSpot[startedPosition[6]].transform.position.y, 0);
+                    _puzzlePieces[7].transform.position = new Vector3(_puzzleSpot[startedPosition[7]].transform.position.x, _puzzleSpot[startedPosition[7]].transform.position.y, 0);
+                    _puzzlePieces[9].transform.position = new Vector3(_puzzleSpot[startedPosition[9]].transform.position.x, _puzzleSpot[startedPosition[9]].transform.position.y, 0);
+                    _puzzlePieces[10].transform.position = new Vector3(_puzzleSpot[startedPosition[10]].transform.position.x, _puzzleSpot[startedPosition[10]].transform.position.y, 0);
+                    _puzzlePieces[11].transform.position = new Vector3(_puzzleSpot[startedPosition[11]].transform.position.x, _puzzleSpot[startedPosition[11]].transform.position.y, 0);
 
                     _puzzlePieces[7].SolvingNumber = _puzzleSpot[startedPosition[7]].SpotNum;
                     _puzzlePieces[9].SolvingNumber = _puzzleSpot[startedPosition[9]].SpotNum;
@@ -447,12 +447,12 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 case 7:
                     if (gifNum == 0)
                     {
-                        StartCoroutine(_puzzlePieces[7].playGifRoutine(1));
-                    }
-                    else if(gifNum == 1)
-                    {
                         StartCoroutine(_puzzlePieces[10].playGifRoutine(0));
                     }
+                    /*else if(gifNum == 1)
+                    {
+                        StartCoroutine(_puzzlePieces[10].playGifRoutine(0));
+                    }*/
                     break;
                 case 8:
                     break;
