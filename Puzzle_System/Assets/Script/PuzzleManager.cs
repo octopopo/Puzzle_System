@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PuzzleSystem.PuzzlePiece.V1;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace PuzzleSystem.PuzzleManagers.V1
 {
@@ -38,6 +39,7 @@ namespace PuzzleSystem.PuzzleManagers.V1
         public CameraBehavior _mainCamera;
         public VideoBehavior _videoPlayer;
         public Button _skipButton;
+        public Button _resetButton;
         //[SerializeField] private int[] _puzzleSetup;
         private int _totalPiece;
         private bool isPosSet = false;
@@ -116,6 +118,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
             GameProgessTracktor();
 
             _skipButton.onClick.AddListener(GameProgessTracktor);
+            _resetButton.onClick.AddListener(Restart);
+            _resetButton.gameObject.SetActive(false);
 
             _winText.gameObject.SetActive(false);
 
@@ -460,6 +464,8 @@ namespace PuzzleSystem.PuzzleManagers.V1
                     Debug.Log("You win!!");
                     _winText.text = "Win";
                     _winText.gameObject.SetActive(true);
+                    _resetButton.gameObject.SetActive(true);
+                    DisablePieceMovement();
                     break;
                 case 10:
                     StartCoroutine(_puzzlePieces[9].playGifRoutine(0));
@@ -514,6 +520,21 @@ namespace PuzzleSystem.PuzzleManagers.V1
                 _playerProgress = GamePhase.Lose;
                 _winText.gameObject.SetActive(true);
                 _winText.text = "Lose";
+                _resetButton.gameObject.SetActive(true);
+                DisablePieceMovement();
+            }
+        }
+
+        public void Restart()
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void DisablePieceMovement()
+        {
+            for (int i = 0; i < _puzzlePieces.Length; i++)
+            {
+                _puzzlePieces[i].SetIsDraggable(false);
             }
         }
     }
